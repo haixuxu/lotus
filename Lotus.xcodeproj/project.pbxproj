@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF4027852928D5F50020BA76 /* LotusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027842928D5F50020BA76 /* LotusApp.swift */; };
+		BF4027872928D5F50020BA76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027862928D5F50020BA76 /* ContentView.swift */; };
+		BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4027882928D5F70020BA76 /* Assets.xcassets */; };
+		BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */; };
+		BF4027972928D5F70020BA76 /* LotusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027962928D5F70020BA76 /* LotusTests.swift */; };
+		BF4027A12928D5F70020BA76 /* LotusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027A02928D5F70020BA76 /* LotusUITests.swift */; };
+		BF4027A32928D5F70020BA76 /* LotusUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF4027932928D5F70020BA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4027792928D5F50020BA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF4027802928D5F50020BA76;
+			remoteInfo = Lotus;
+		};
+		BF40279D2928D5F70020BA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF4027792928D5F50020BA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF4027802928D5F50020BA76;
+			remoteInfo = Lotus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BF4027812928D5F50020BA76 /* Lotus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4027842928D5F50020BA76 /* LotusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusApp.swift; sourceTree = "<group>"; };
+		BF4027862928D5F50020BA76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF4027882928D5F70020BA76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF40278D2928D5F70020BA76 /* Lotus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lotus.entitlements; sourceTree = "<group>"; };
+		BF4027922928D5F70020BA76 /* LotusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LotusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4027962928D5F70020BA76 /* LotusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusTests.swift; sourceTree = "<group>"; };
+		BF40279C2928D5F70020BA76 /* LotusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LotusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4027A02928D5F70020BA76 /* LotusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusUITests.swift; sourceTree = "<group>"; };
+		BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF40277E2928D5F50020BA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF40278F2928D5F70020BA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4027992928D5F70020BA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF4027782928D5F50020BA76 = {
+			isa = PBXGroup;
+			children = (
+				BF4027832928D5F50020BA76 /* Lotus */,
+				BF4027952928D5F70020BA76 /* LotusTests */,
+				BF40279F2928D5F70020BA76 /* LotusUITests */,
+				BF4027822928D5F50020BA76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF4027822928D5F50020BA76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF4027812928D5F50020BA76 /* Lotus.app */,
+				BF4027922928D5F70020BA76 /* LotusTests.xctest */,
+				BF40279C2928D5F70020BA76 /* LotusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF4027832928D5F50020BA76 /* Lotus */ = {
+			isa = PBXGroup;
+			children = (
+				BF4027842928D5F50020BA76 /* LotusApp.swift */,
+				BF4027862928D5F50020BA76 /* ContentView.swift */,
+				BF4027882928D5F70020BA76 /* Assets.xcassets */,
+				BF40278D2928D5F70020BA76 /* Lotus.entitlements */,
+				BF40278A2928D5F70020BA76 /* Preview Content */,
+			);
+			path = Lotus;
+			sourceTree = "<group>";
+		};
+		BF40278A2928D5F70020BA76 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF4027952928D5F70020BA76 /* LotusTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF4027962928D5F70020BA76 /* LotusTests.swift */,
+			);
+			path = LotusTests;
+			sourceTree = "<group>";
+		};
+		BF40279F2928D5F70020BA76 /* LotusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BF4027A02928D5F70020BA76 /* LotusUITests.swift */,
+				BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */,
+			);
+			path = LotusUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF4027802928D5F50020BA76 /* Lotus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4027A62928D5F70020BA76 /* Build configuration list for PBXNativeTarget "Lotus" */;
+			buildPhases = (
+				BF40277D2928D5F50020BA76 /* Sources */,
+				BF40277E2928D5F50020BA76 /* Frameworks */,
+				BF40277F2928D5F50020BA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lotus;
+			productName = Lotus;
+			productReference = BF4027812928D5F50020BA76 /* Lotus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF4027912928D5F70020BA76 /* LotusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4027A92928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusTests" */;
+			buildPhases = (
+				BF40278E2928D5F70020BA76 /* Sources */,
+				BF40278F2928D5F70020BA76 /* Frameworks */,
+				BF4027902928D5F70020BA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF4027942928D5F70020BA76 /* PBXTargetDependency */,
+			);
+			name = LotusTests;
+			productName = LotusTests;
+			productReference = BF4027922928D5F70020BA76 /* LotusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF40279B2928D5F70020BA76 /* LotusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4027AC2928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusUITests" */;
+			buildPhases = (
+				BF4027982928D5F70020BA76 /* Sources */,
+				BF4027992928D5F70020BA76 /* Frameworks */,
+				BF40279A2928D5F70020BA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF40279E2928D5F70020BA76 /* PBXTargetDependency */,
+			);
+			name = LotusUITests;
+			productName = LotusUITests;
+			productReference = BF40279C2928D5F70020BA76 /* LotusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF4027792928D5F50020BA76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					BF4027802928D5F50020BA76 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					BF4027912928D5F70020BA76 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = BF4027802928D5F50020BA76;
+					};
+					BF40279B2928D5F70020BA76 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = BF4027802928D5F50020BA76;
+					};
+				};
+			};
+			buildConfigurationList = BF40277C2928D5F50020BA76 /* Build configuration list for PBXProject "Lotus" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF4027782928D5F50020BA76;
+			productRefGroup = BF4027822928D5F50020BA76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF4027802928D5F50020BA76 /* Lotus */,
+				BF4027912928D5F70020BA76 /* LotusTests */,
+				BF40279B2928D5F70020BA76 /* LotusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF40277F2928D5F50020BA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */,
+				BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4027902928D5F70020BA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF40279A2928D5F70020BA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF40277D2928D5F50020BA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF4027872928D5F50020BA76 /* ContentView.swift in Sources */,
+				BF4027852928D5F50020BA76 /* LotusApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF40278E2928D5F70020BA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF4027972928D5F70020BA76 /* LotusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF4027982928D5F70020BA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF4027A32928D5F70020BA76 /* LotusUITestsLaunchTests.swift in Sources */,
+				BF4027A12928D5F70020BA76 /* LotusUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF4027942928D5F70020BA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF4027802928D5F50020BA76 /* Lotus */;
+			targetProxy = BF4027932928D5F70020BA76 /* PBXContainerItemProxy */;
+		};
+		BF40279E2928D5F70020BA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF4027802928D5F50020BA76 /* Lotus */;
+			targetProxy = BF40279D2928D5F70020BA76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BF4027A42928D5F70020BA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF4027A52928D5F70020BA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BF4027A72928D5F70020BA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lotus/Lotus.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Lotus/Preview Content\"";
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.Lotus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BF4027A82928D5F70020BA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lotus/Lotus.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Lotus/Preview Content\"";
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.Lotus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BF4027AA2928D5F70020BA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lotus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lotus";
+			};
+			name = Debug;
+		};
+		BF4027AB2928D5F70020BA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lotus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lotus";
+			};
+			name = Release;
+		};
+		BF4027AD2928D5F70020BA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Lotus;
+			};
+			name = Debug;
+		};
+		BF4027AE2928D5F70020BA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Lotus;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF40277C2928D5F50020BA76 /* Build configuration list for PBXProject "Lotus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4027A42928D5F70020BA76 /* Debug */,
+				BF4027A52928D5F70020BA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF4027A62928D5F70020BA76 /* Build configuration list for PBXNativeTarget "Lotus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4027A72928D5F70020BA76 /* Debug */,
+				BF4027A82928D5F70020BA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF4027A92928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4027AA2928D5F70020BA76 /* Debug */,
+				BF4027AB2928D5F70020BA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF4027AC2928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4027AD2928D5F70020BA76 /* Debug */,
+				BF4027AE2928D5F70020BA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF4027792928D5F50020BA76 /* Project object */;
+}

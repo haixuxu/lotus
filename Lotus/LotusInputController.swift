@@ -19,6 +19,12 @@ class LotusInputController: IMKInputController {
         guard let client = sender as? IMKTextInput else {
             return false
         }
+        let me = "?"
+        if string==me {
+        
+            client.insertText("???", replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+            return true
+        }
         client.insertText(string, replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
         return true
     }

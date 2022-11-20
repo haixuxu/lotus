@@ -1,0 +1,24 @@
+PODS:
+  - Defaults (4.2.2)
+  - Preferences (2.5.0)
+  - Sparkle (1.26.0)
+
+DEPENDENCIES:
+  - Defaults
+  - Preferences
+  - Sparkle (~> 1.26.0)
+
+SPEC REPOS:
+  trunk:
+    - Defaults
+    - Preferences
+    - Sparkle
+
+SPEC CHECKSUMS:
+  Defaults: d785e56c0fb8890dc40351603f05c8e1df1bdd45
+  Preferences: a78dbe5c407afb66408a929d4708f8fd82abad85
+  Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
+
+PODFILE CHECKSUM: 0f5a572db3923a84c873ab3401b75e87c1e85886
+
+COCOAPODS: 1.11.3

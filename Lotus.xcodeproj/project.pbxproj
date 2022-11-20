@@ -7,50 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1606C6CC04458BF61C9A1EB5 /* libPods-Lotus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */; };
 		BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4027882928D5F70020BA76 /* Assets.xcassets */; };
 		BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */; };
-		BF4027972928D5F70020BA76 /* LotusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027962928D5F70020BA76 /* LotusTests.swift */; };
-		BF4027A12928D5F70020BA76 /* LotusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027A02928D5F70020BA76 /* LotusUITests.swift */; };
-		BF4027A32928D5F70020BA76 /* LotusUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */; };
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
 		BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027B12928D70B0020BA76 /* LotusInputController.swift */; };
 		BF4027B62928D7570020BA76 /* icecat.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* icecat.icns */; };
-		BF78D02A2928F09100320209 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF78D0292928F09100320209 /* Info.plist */; };
 		BF78D1462929429500320209 /* LotusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78D1452929429500320209 /* LotusMenu.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BF4027932928D5F70020BA76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF4027792928D5F50020BA76 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF4027802928D5F50020BA76;
-			remoteInfo = Lotus;
-		};
-		BF40279D2928D5F70020BA76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF4027792928D5F50020BA76 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF4027802928D5F50020BA76;
-			remoteInfo = Lotus;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		2C7D27D21D6B163CE8E292D5 /* Pods-Lotus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotus.release.xcconfig"; path = "Target Support Files/Pods-Lotus/Pods-Lotus.release.xcconfig"; sourceTree = "<group>"; };
+		6DCC54591A299AA065671DF1 /* Pods-LotusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotusTests.debug.xcconfig"; path = "Target Support Files/Pods-LotusTests/Pods-LotusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		75A526D6D76245272A3F847C /* libPods-LotusTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LotusTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C5F23C7E76F381492FE6980 /* Pods-LotusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotusTests.release.xcconfig"; path = "Target Support Files/Pods-LotusTests/Pods-LotusTests.release.xcconfig"; sourceTree = "<group>"; };
 		BF4027812928D5F50020BA76 /* Lotus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4027882928D5F70020BA76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF40278D2928D5F70020BA76 /* Lotus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lotus.entitlements; sourceTree = "<group>"; };
-		BF4027922928D5F70020BA76 /* LotusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LotusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4027962928D5F70020BA76 /* LotusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusTests.swift; sourceTree = "<group>"; };
-		BF40279C2928D5F70020BA76 /* LotusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LotusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF4027A02928D5F70020BA76 /* LotusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusUITests.swift; sourceTree = "<group>"; };
-		BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4027B12928D70B0020BA76 /* LotusInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusInputController.swift; sourceTree = "<group>"; };
 		BF4027B52928D7570020BA76 /* icecat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icecat.icns; path = ../../../Desktop/icecat.icns; sourceTree = "<group>"; };
 		BF78D0292928F09100320209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF78D1452929429500320209 /* LotusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusMenu.swift; sourceTree = "<group>"; };
+		CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lotus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE93A338CB687328DEF40A5 /* Pods-Lotus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotus.debug.xcconfig"; path = "Target Support Files/Pods-Lotus/Pods-Lotus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,33 +40,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF40278F2928D5F70020BA76 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF4027992928D5F70020BA76 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				1606C6CC04458BF61C9A1EB5 /* libPods-Lotus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068B1BC4CD5E266CF220597F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFE93A338CB687328DEF40A5 /* Pods-Lotus.debug.xcconfig */,
+				2C7D27D21D6B163CE8E292D5 /* Pods-Lotus.release.xcconfig */,
+				6DCC54591A299AA065671DF1 /* Pods-LotusTests.debug.xcconfig */,
+				7C5F23C7E76F381492FE6980 /* Pods-LotusTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC5586474085AEB75EDA6594 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */,
+				75A526D6D76245272A3F847C /* libPods-LotusTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF4027782928D5F50020BA76 = {
 			isa = PBXGroup;
 			children = (
 				BF4027832928D5F50020BA76 /* Lotus */,
 				BF4027952928D5F70020BA76 /* LotusTests */,
-				BF40279F2928D5F70020BA76 /* LotusUITests */,
 				BF4027822928D5F50020BA76 /* Products */,
+				068B1BC4CD5E266CF220597F /* Pods */,
+				BC5586474085AEB75EDA6594 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				BF4027812928D5F50020BA76 /* Lotus.app */,
-				BF4027922928D5F70020BA76 /* LotusTests.xctest */,
-				BF40279C2928D5F70020BA76 /* LotusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,15 +117,6 @@
 			path = LotusTests;
 			sourceTree = "<group>";
 		};
-		BF40279F2928D5F70020BA76 /* LotusUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BF4027A02928D5F70020BA76 /* LotusUITests.swift */,
-				BF4027A22928D5F70020BA76 /* LotusUITestsLaunchTests.swift */,
-			);
-			path = LotusUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +124,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF4027A62928D5F70020BA76 /* Build configuration list for PBXNativeTarget "Lotus" */;
 			buildPhases = (
+				CBAE3F2685DAFB937E802663 /* [CP] Check Pods Manifest.lock */,
 				BF40277D2928D5F50020BA76 /* Sources */,
 				BF40277E2928D5F50020BA76 /* Frameworks */,
 				BF40277F2928D5F50020BA76 /* Resources */,
+				3E5045C096BE7ED0478C529D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,42 +138,6 @@
 			productName = Lotus;
 			productReference = BF4027812928D5F50020BA76 /* Lotus.app */;
 			productType = "com.apple.product-type.application";
-		};
-		BF4027912928D5F70020BA76 /* LotusTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF4027A92928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusTests" */;
-			buildPhases = (
-				BF40278E2928D5F70020BA76 /* Sources */,
-				BF40278F2928D5F70020BA76 /* Frameworks */,
-				BF4027902928D5F70020BA76 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF4027942928D5F70020BA76 /* PBXTargetDependency */,
-			);
-			name = LotusTests;
-			productName = LotusTests;
-			productReference = BF4027922928D5F70020BA76 /* LotusTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BF40279B2928D5F70020BA76 /* LotusUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF4027AC2928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusUITests" */;
-			buildPhases = (
-				BF4027982928D5F70020BA76 /* Sources */,
-				BF4027992928D5F70020BA76 /* Frameworks */,
-				BF40279A2928D5F70020BA76 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF40279E2928D5F70020BA76 /* PBXTargetDependency */,
-			);
-			name = LotusUITests;
-			productName = LotusUITests;
-			productReference = BF40279C2928D5F70020BA76 /* LotusUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -207,14 +152,6 @@
 					BF4027802928D5F50020BA76 = {
 						CreatedOnToolsVersion = 14.0.1;
 						LastSwiftMigration = 1400;
-					};
-					BF4027912928D5F70020BA76 = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = BF4027802928D5F50020BA76;
-					};
-					BF40279B2928D5F70020BA76 = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = BF4027802928D5F50020BA76;
 					};
 				};
 			};
@@ -232,8 +169,6 @@
 			projectRoot = "";
 			targets = (
 				BF4027802928D5F50020BA76 /* Lotus */,
-				BF4027912928D5F70020BA76 /* LotusTests */,
-				BF40279B2928D5F70020BA76 /* LotusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,28 +178,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF78D02A2928F09100320209 /* Info.plist in Resources */,
 				BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */,
 				BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */,
 				BF4027B62928D7570020BA76 /* icecat.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF4027902928D5F70020BA76 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF40279A2928D5F70020BA76 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E5045C096BE7ED0478C529D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lotus/Pods-Lotus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lotus/Pods-Lotus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lotus/Pods-Lotus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBAE3F2685DAFB937E802663 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lotus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF40277D2928D5F50020BA76 /* Sources */ = {
@@ -277,37 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF40278E2928D5F70020BA76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF4027972928D5F70020BA76 /* LotusTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF4027982928D5F70020BA76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF4027A32928D5F70020BA76 /* LotusUITestsLaunchTests.swift in Sources */,
-				BF4027A12928D5F70020BA76 /* LotusUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BF4027942928D5F70020BA76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF4027802928D5F50020BA76 /* Lotus */;
-			targetProxy = BF4027932928D5F70020BA76 /* PBXContainerItemProxy */;
-		};
-		BF40279E2928D5F70020BA76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF4027802928D5F50020BA76 /* Lotus */;
-			targetProxy = BF40279D2928D5F70020BA76 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BF4027A42928D5F70020BA76 /* Debug */ = {
@@ -342,11 +274,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CONFIGURATION_BUILD_DIR = "/Library/Input Methods";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,7 +302,6 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SYMROOT = "/Library/Input Methods";
 			};
 			name = Debug;
 		};
@@ -405,11 +337,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CONFIGURATION_BUILD_DIR = "/Library/Input Methods";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -430,130 +363,96 @@
 		};
 		BF4027A72928D5F70020BA76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFE93A338CB687328DEF40A5 /* Pods-Lotus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Lotus/Lotus.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Library/Input Methods";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Lotus/Preview Content\"";
 				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Sparkle\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/.\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Defaults\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Preferences\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.Lotus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
 		BF4027A82928D5F70020BA76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C7D27D21D6B163CE8E292D5 /* Pods-Lotus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Lotus/Lotus.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = output;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Lotus/Preview Content\"";
 				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Sparkle\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/.\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Defaults\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Preferences\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.Lotus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		BF4027AA2928D5F70020BA76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lotus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lotus";
-			};
-			name = Debug;
-		};
-		BF4027AB2928D5F70020BA76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lotus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lotus";
-			};
-			name = Release;
-		};
-		BF4027AD2928D5F70020BA76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Lotus;
-			};
-			name = Debug;
-		};
-		BF4027AE2928D5F70020BA76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 26Q2UHVQ6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xuxihai.inputmethod.LotusUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Lotus;
+				SYMROOT = build;
 			};
 			name = Release;
 		};
@@ -574,24 +473,6 @@
 			buildConfigurations = (
 				BF4027A72928D5F70020BA76 /* Debug */,
 				BF4027A82928D5F70020BA76 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF4027A92928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF4027AA2928D5F70020BA76 /* Debug */,
-				BF4027AB2928D5F70020BA76 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF4027AC2928D5F70020BA76 /* Build configuration list for PBXNativeTarget "LotusUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF4027AD2928D5F70020BA76 /* Debug */,
-				BF4027AE2928D5F70020BA76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

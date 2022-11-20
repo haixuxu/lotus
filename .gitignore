@@ -1,0 +1,7 @@
+tempdir
+tempdata
+.DS_Store
+*.xcworkspace
+Pods
+test.sh
+output

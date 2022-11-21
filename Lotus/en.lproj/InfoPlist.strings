@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Lotus
+
+  Created by xuxihai on 2022/11/21.
+  
+*/
+com.xuxihai.inputmethod.Lotus = "Lotus@kit";
+CFBundleName = "Lotus";
+CFBundleDisplayName = "Lotus@kit";

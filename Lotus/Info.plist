@@ -1,65 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>BuildMachineOSBuild</key>
-    <string>21G115</string>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleExecutable</key>
-    <string>IMKitSample</string>
-    <key>CFBundleIdentifier</key>
-    <string>dev.ensan.inputmethod.IMKitSample</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>IMKitSample</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
-    <key>CFBundleSupportedPlatforms</key>
-    <array>
-        <string>MacOSX</string>
-    </array>
-    <key>CFBundleVersion</key>
-    <string>1</string>
-    <key>DTCompiler</key>
-    <string>com.apple.compilers.llvm.clang.1_0</string>
-    <key>DTPlatformBuild</key>
-    <string>14A400</string>
-    <key>DTPlatformName</key>
-    <string>macosx</string>
-    <key>DTPlatformVersion</key>
-    <string>12.3</string>
-    <key>DTSDKBuild</key>
-    <string>21E226</string>
-    <key>DTSDKName</key>
-    <string>macosx12.3</string>
-    <key>DTXcode</key>
-    <string>1401</string>
-    <key>DTXcodeBuild</key>
-    <string>14A400</string>
- 
-    <key>LSMinimumSystemVersion</key>
-    <string>11.0</string>
-    <key>NSHumanReadableCopyright</key>
-    <string>xuxihai reserve</string>
-    
-    <key>NSPrincipalClass</key>
-    <string>$(PRODUCT_MODULE_NAME).NSManualApplication</string>
-    <key>InputMethodConnectionName</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)_Connection</string>
-    <key>InputMethodServerControllerClass</key>
-    <string>$(PRODUCT_MODULE_NAME).LotusInputController</string>
-    <key>LSBackgroundOnly</key>
-    <true/>
-    <key>tsInputMethodCharacterRepertoireKey</key>
-    <array>
-        <string>zh-Hans</string>
-    </array>
-    <key>tsInputMethodIconFileKey</key>
-    <string>icecat.icns</string>
-</dict>
-</plist>
+    <dict>
+        <key>BuildMachineOSBuild</key>
+        <string>21G115</string>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleExecutable</key>
+        <string>Lotus</string>
+        <key>CFBundleGetInfoString</key>
+        <string>Copyright © 2022 xuxihai. All Rights Reserved.</string>
+        <key>CFBundleIconFile</key>
+        <string>icon64.icns</string>
+        <key>CFBundleIconName</key>
+        <string>lotus</string>
+        <key>CFBundleIdentifier</key>
+        <string>com.xuxihai.inputmethod.Lotus</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundleName</key>
+        <string>Lotus</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleShortVersionString</key>
+        <string>1.0.0</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>CFBundleSupportedPlatforms</key>
+        <array>
+            <string>MacOSX</string>
+        </array>
+        <key>CFBundleVersion</key>
+        <string>100001</string>
+        <key>ComponentInputModeDict</key>
+        <dict>
+            <key>tsInputModeListKey</key>
+            <dict>
+                <key>com.xuxihai.inputmethod.Lotus</key>
+                <dict>
+                    <key>TISInputSourceID</key>
+                    <string>com.xuxihai.inputmethod.Lotus</string>
+                    <key>TISIntendedLanguage</key>
+                    <string>zh-Hans</string>
+                    <key>tsInputModeAlternateMenuIconFileKey</key>
+                    <string>icon64.icns</string>
+                    <key>tsInputModeDefaultStateKey</key>
+                    <true />
+                    <key>tsInputModeCharacterRepertoireKey</key>
+                    <array>
+                        <string>zh-Hans</string>
+                    </array>
+                    <key>tsInputModeIsVisibleKey</key>
+                    <true />
+                    <key>tsInputModeJISKeyboardShortcutKey</key>
+                    <integer>1</integer>
+                    <key>tsInputModeKeyEquivalentKey</key>
+                    <string>J</string>
+                    <key>tsInputModeKeyEquivalentModifiersKey</key>
+                    <integer>4608</integer>
+                    <key>tsInputModeMenuIconFileKey</key>
+                    <string>icon64.icns</string>
+                    <key>tsInputModePaletteIconFileKey</key>
+                    <string>icon64.icns</string>
+                    <key>tsInputModePrimaryInScriptKey</key>
+                    <true />
+                    <key>tsInputModeScriptKey</key>
+                    <string>smUnicodeScript</string>
+                </dict>
+            </dict>
+            <key>tsVisibleInputModeOrderedArrayKey</key>
+            <array>
+                <string>com.xuxihai.inputmethod.Lotus</string>
+            </array>
+        </dict>
+        <key>DTCompiler</key>
+        <string>com.apple.compilers.llvm.clang.1_0</string>
+        <key>DTPlatformBuild</key>
+        <string>14A400</string>
+        <key>DTPlatformName</key>
+        <string>macosx</string>
+        <key>DTPlatformVersion</key>
+        <string>12.3</string>
+        <key>DTSDKBuild</key>
+        <string>21E226</string>
+        <key>DTSDKName</key>
+        <string>macosx12.3</string>
+        <key>DTXcode</key>
+        <string>1401</string>
+        <key>DTXcodeBuild</key>
+        <string>14A400</string>
+        <key>LSMinimumSystemVersion</key>
+        <string>10.15</string>
+        <key>NSHumanReadableCopyright</key>
+        <string>Copyright © 2022 xuxihai. All rights reserved.</string>
+        <key>NSMainNibFile</key>
+        <string>MainMenu</string>
+        <key>NSPrincipalClass</key>
+        <string>NSApplication</string>
+        <key>InputMethodConnectionName</key>
+        <string>Lotus_90_Connection</string>
+        <key>InputMethodServerControllerClass</key>
+        <string>Lotus.LotusInputController</string>
+        <key>InputMethodServerDelegateClass</key>
+        <string>Lotus.LotusInputController</string>
+        <key>LSApplicationCategoryType</key>
+        <string>public.app-category.utilities</string>
+        <key>LSBackgroundOnly</key>
+        <true />
+        <key>LSHasLocalizedDisplayName</key>
+        <true />
 
+        <key>LSBackgroundOnly</key>
+        <true />
+        <key>tsInputMethodAlternateIconFileKey</key>
+        <string>icon64.icns</string>
+        <key>tsInputMethodCharacterRepertoireKey</key>
+        <array>
+            <string>Hans</string>
+        </array>
+        <key>tsInputMethodIconFileKey</key>
+        <string>icon64.icns</string>
+    </dict>
+</plist>

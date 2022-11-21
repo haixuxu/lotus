@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Lotus
+
+  Created by xuxihai on 2022/11/21.
+
+
+/* Localized versions of Info.plist keys */
+
+com.xuxihai.inputmethod.Lotus = "Lotus1";
+CFBundleName = "Lotus";
+CFBundleDisplayName = "Lotus";
+

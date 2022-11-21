@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Lotus
+
+  Created by xuxihai on 2022/11/21.
+  
+*/
+
+
+com.xuxihai.inputmethod.Lotus = "青莲输入法2";
+CFBundleName = "Lotus";
+CFBundleDisplayName = "Lotus";

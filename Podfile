@@ -4,7 +4,7 @@ platform :osx, '10.15'
 target 'Lotus' do
   # Comment the next line if you don't want to use dynamic frameworks
   # use_frameworks!
-  # Pods for Fire
+  # Pods for Lotus
   pod 'Sparkle', '~> 1.26.0'
   
   pod 'Preferences'

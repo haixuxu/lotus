@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		1606C6CC04458BF61C9A1EB5 /* libPods-Lotus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */; };
+		BF09CE45292B5126006BD496 /* lotus_19x19.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE47292B5126006BD496 /* lotus_19x19.pdf */; };
+		BF09CE64292B62DF006BD496 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE66292B62DF006BD496 /* InfoPlist.strings */; };
+		BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE6C292B63DE006BD496 /* Localizable.strings */; };
+		BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D45F292A96E700BDB452 /* PreferencesView.swift */; };
+		BF19D462292A97FC00BDB452 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D461292A97FC00BDB452 /* Utils.swift */; };
+		BF19D464292A982700BDB452 /* InputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D463292A982700BDB452 /* InputSource.swift */; };
+		BF19D466292A984400BDB452 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D465292A984400BDB452 /* Context.swift */; };
+		BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D467292A98A100BDB452 /* CandidatesView.swift */; };
+		BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */; };
+		BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF19D46B292A992D00BDB452 /* MainMenu.xib */; };
+		BF19D475292AA17900BDB452 /* table.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF19D474292AA13800BDB452 /* table.sqlite */; };
 		BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4027882928D5F70020BA76 /* Assets.xcassets */; };
 		BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */; };
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
 		BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027B12928D70B0020BA76 /* LotusInputController.swift */; };
-		BF4027B62928D7570020BA76 /* icecat.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* icecat.icns */; };
-		BF78D1462929429500320209 /* LotusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78D1452929429500320209 /* LotusMenu.swift */; };
+		BF4027B62928D7570020BA76 /* lotus.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* lotus.icns */; };
+		BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +32,22 @@
 		6DCC54591A299AA065671DF1 /* Pods-LotusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotusTests.debug.xcconfig"; path = "Target Support Files/Pods-LotusTests/Pods-LotusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75A526D6D76245272A3F847C /* libPods-LotusTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LotusTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5F23C7E76F381492FE6980 /* Pods-LotusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LotusTests.release.xcconfig"; path = "Target Support Files/Pods-LotusTests/Pods-LotusTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF09CE46292B5126006BD496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Base; path = Base.lproj/lotus_19x19.pdf; sourceTree = "<group>"; };
+		BF09CE4D292B529E006BD496 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF09CE5D292B5A74006BD496 /* py_table.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = py_table.txt; sourceTree = "<group>"; };
+		BF09CE5E292B5A74006BD496 /* wb_table.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = wb_table.txt; sourceTree = "<group>"; };
+		BF09CE65292B62DF006BD496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF09CE67292B62E2006BD496 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BF09CE6B292B63DE006BD496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF09CE6D292B63E1006BD496 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF19D45F292A96E700BDB452 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		BF19D461292A97FC00BDB452 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BF19D463292A982700BDB452 /* InputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSource.swift; sourceTree = "<group>"; };
+		BF19D465292A984400BDB452 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		BF19D467292A98A100BDB452 /* CandidatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesView.swift; sourceTree = "<group>"; };
+		BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesWindow.swift; sourceTree = "<group>"; };
+		BF19D46B292A992D00BDB452 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		BF19D474292AA13800BDB452 /* table.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = table.sqlite; sourceTree = "<group>"; };
 		BF4027812928D5F50020BA76 /* Lotus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4027882928D5F70020BA76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -28,9 +55,8 @@
 		BF4027962928D5F70020BA76 /* LotusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusTests.swift; sourceTree = "<group>"; };
 		BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4027B12928D70B0020BA76 /* LotusInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusInputController.swift; sourceTree = "<group>"; };
-		BF4027B52928D7570020BA76 /* icecat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icecat.icns; path = ../../../Desktop/icecat.icns; sourceTree = "<group>"; };
-		BF78D0292928F09100320209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF78D1452929429500320209 /* LotusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusMenu.swift; sourceTree = "<group>"; };
+		BF4027B52928D7570020BA76 /* lotus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = lotus.icns; path = ../../../Desktop/lotus.icns; sourceTree = "<group>"; };
+		BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon64.icns; sourceTree = "<group>"; };
 		CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lotus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE93A338CB687328DEF40A5 /* Pods-Lotus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotus.debug.xcconfig"; path = "Target Support Files/Pods-Lotus/Pods-Lotus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +93,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF09CE5C292B5A4B006BD496 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				BF19D474292AA13800BDB452 /* table.sqlite */,
+				BF09CE5D292B5A74006BD496 /* py_table.txt */,
+				BF09CE5E292B5A74006BD496 /* wb_table.txt */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		BF148925292BC40C00BC6976 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				BF19D45F292A96E700BDB452 /* PreferencesView.swift */,
+				BF19D467292A98A100BDB452 /* CandidatesView.swift */,
+				BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		BF4027782928D5F50020BA76 = {
 			isa = PBXGroup;
 			children = (
@@ -89,14 +135,23 @@
 		BF4027832928D5F50020BA76 /* Lotus */ = {
 			isa = PBXGroup;
 			children = (
-				BF78D0292928F09100320209 /* Info.plist */,
-				BF4027B52928D7570020BA76 /* icecat.icns */,
+				BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */,
+				BF148925292BC40C00BC6976 /* views */,
+				BF09CE5C292B5A4B006BD496 /* json */,
+				BF09CE47292B5126006BD496 /* lotus_19x19.pdf */,
+				BF4027B52928D7570020BA76 /* lotus.icns */,
 				BF4027882928D5F70020BA76 /* Assets.xcassets */,
 				BF40278D2928D5F70020BA76 /* Lotus.entitlements */,
+				BF09CE4D292B529E006BD496 /* Info.plist */,
 				BF40278A2928D5F70020BA76 /* Preview Content */,
 				BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */,
 				BF4027B12928D70B0020BA76 /* LotusInputController.swift */,
-				BF78D1452929429500320209 /* LotusMenu.swift */,
+				BF19D461292A97FC00BDB452 /* Utils.swift */,
+				BF19D463292A982700BDB452 /* InputSource.swift */,
+				BF19D465292A984400BDB452 /* Context.swift */,
+				BF19D46B292A992D00BDB452 /* MainMenu.xib */,
+				BF09CE66292B62DF006BD496 /* InfoPlist.strings */,
+				BF09CE6C292B63DE006BD496 /* Localizable.strings */,
 			);
 			path = Lotus;
 			sourceTree = "<group>";
@@ -162,6 +217,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = BF4027782928D5F50020BA76;
 			productRefGroup = BF4027822928D5F50020BA76 /* Products */;
@@ -178,9 +235,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF19D475292AA17900BDB452 /* table.sqlite in Resources */,
 				BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */,
 				BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */,
-				BF4027B62928D7570020BA76 /* icecat.icns in Resources */,
+				BF09CE45292B5126006BD496 /* lotus_19x19.pdf in Resources */,
+				BF4027B62928D7570020BA76 /* lotus.icns in Resources */,
+				BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */,
+				BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */,
+				BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */,
+				BF09CE64292B62DF006BD496 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,19 +296,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF19D462292A97FC00BDB452 /* Utils.swift in Sources */,
+				BF19D464292A982700BDB452 /* InputSource.swift in Sources */,
+				BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */,
+				BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */,
+				BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */,
 				BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */,
+				BF19D466292A984400BDB452 /* Context.swift in Sources */,
 				BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */,
-				BF78D1462929429500320209 /* LotusMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF09CE47292B5126006BD496 /* lotus_19x19.pdf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF09CE46292B5126006BD496 /* Base */,
+			);
+			name = lotus_19x19.pdf;
+			sourceTree = "<group>";
+		};
+		BF09CE66292B62DF006BD496 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF09CE65292B62DF006BD496 /* en */,
+				BF09CE67292B62E2006BD496 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF09CE6C292B63DE006BD496 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF09CE6B292B63DE006BD496 /* en */,
+				BF09CE6D292B63E1006BD496 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF4027A42928D5F70020BA76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -309,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -384,7 +483,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Sparkle\"",
 				);
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,7 +531,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Sparkle\"",
 				);
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

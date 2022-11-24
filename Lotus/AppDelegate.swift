@@ -19,6 +19,7 @@ extension Defaults.Keys {
     //           Key          Type   UserDefaults name   Default value
 }
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var server = IMKServer()

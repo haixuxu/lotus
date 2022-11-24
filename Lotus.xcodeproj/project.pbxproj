@@ -11,6 +11,7 @@
 		BF09CE45292B5126006BD496 /* lotus_19x19.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE47292B5126006BD496 /* lotus_19x19.pdf */; };
 		BF09CE64292B62DF006BD496 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE66292B62DF006BD496 /* InfoPlist.strings */; };
 		BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE6C292B63DE006BD496 /* Localizable.strings */; };
+		BF0DC261292DFA030061514A /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0DC260292DFA030061514A /* Trie.swift */; };
 		BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D45F292A96E700BDB452 /* PreferencesView.swift */; };
 		BF19D462292A97FC00BDB452 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D461292A97FC00BDB452 /* Utils.swift */; };
 		BF19D464292A982700BDB452 /* InputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D463292A982700BDB452 /* InputSource.swift */; };
@@ -18,7 +19,9 @@
 		BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D467292A98A100BDB452 /* CandidatesView.swift */; };
 		BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */; };
 		BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF19D46B292A992D00BDB452 /* MainMenu.xib */; };
-		BF19D475292AA17900BDB452 /* table.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF19D474292AA13800BDB452 /* table.sqlite */; };
+		BF221A91292F464900C05C87 /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF221A90292F464900C05C87 /* LineReader.swift */; };
+		BF221A92292F51BA00C05C87 /* py_table.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE5D292B5A74006BD496 /* py_table.txt */; };
+		BF221A93292F51BA00C05C87 /* wb_table.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE5E292B5A74006BD496 /* wb_table.txt */; };
 		BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4027882928D5F70020BA76 /* Assets.xcassets */; };
 		BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */; };
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
@@ -26,6 +29,19 @@
 		BF4027B62928D7570020BA76 /* lotus.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* lotus.icns */; };
 		BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF0DC255292DF96D0061514A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2C7D27D21D6B163CE8E292D5 /* Pods-Lotus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotus.release.xcconfig"; path = "Target Support Files/Pods-Lotus/Pods-Lotus.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +56,7 @@
 		BF09CE67292B62E2006BD496 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BF09CE6B292B63DE006BD496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF09CE6D292B63E1006BD496 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF0DC260292DFA030061514A /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 		BF19D45F292A96E700BDB452 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		BF19D461292A97FC00BDB452 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BF19D463292A982700BDB452 /* InputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSource.swift; sourceTree = "<group>"; };
@@ -48,6 +65,7 @@
 		BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesWindow.swift; sourceTree = "<group>"; };
 		BF19D46B292A992D00BDB452 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		BF19D474292AA13800BDB452 /* table.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = table.sqlite; sourceTree = "<group>"; };
+		BF221A90292F464900C05C87 /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
 		BF4027812928D5F50020BA76 /* Lotus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lotus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4027882928D5F70020BA76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF40278B2928D5F70020BA76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -146,12 +164,14 @@
 				BF40278A2928D5F70020BA76 /* Preview Content */,
 				BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */,
 				BF4027B12928D70B0020BA76 /* LotusInputController.swift */,
+				BF0DC260292DFA030061514A /* Trie.swift */,
 				BF19D461292A97FC00BDB452 /* Utils.swift */,
 				BF19D463292A982700BDB452 /* InputSource.swift */,
 				BF19D465292A984400BDB452 /* Context.swift */,
 				BF19D46B292A992D00BDB452 /* MainMenu.xib */,
 				BF09CE66292B62DF006BD496 /* InfoPlist.strings */,
 				BF09CE6C292B63DE006BD496 /* Localizable.strings */,
+				BF221A90292F464900C05C87 /* LineReader.swift */,
 			);
 			path = Lotus;
 			sourceTree = "<group>";
@@ -184,6 +204,7 @@
 				BF40277E2928D5F50020BA76 /* Frameworks */,
 				BF40277F2928D5F50020BA76 /* Resources */,
 				3E5045C096BE7ED0478C529D /* [CP] Embed Pods Frameworks */,
+				BF0DC255292DF96D0061514A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,7 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF19D475292AA17900BDB452 /* table.sqlite in Resources */,
+				BF221A92292F51BA00C05C87 /* py_table.txt in Resources */,
+				BF221A93292F51BA00C05C87 /* wb_table.txt in Resources */,
 				BF40278C2928D5F70020BA76 /* Preview Assets.xcassets in Resources */,
 				BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */,
 				BF09CE45292B5126006BD496 /* lotus_19x19.pdf in Resources */,
@@ -296,10 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF221A91292F464900C05C87 /* LineReader.swift in Sources */,
 				BF19D462292A97FC00BDB452 /* Utils.swift in Sources */,
 				BF19D464292A982700BDB452 /* InputSource.swift in Sources */,
 				BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */,
 				BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */,
+				BF0DC261292DFA030061514A /* Trie.swift in Sources */,
 				BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */,
 				BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */,
 				BF19D466292A984400BDB452 /* Context.swift in Sources */,

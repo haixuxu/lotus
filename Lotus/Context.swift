@@ -49,21 +49,62 @@ extension UserDefaults {
     }
 }
 
-internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+func dictAppendTrie(dictfile: String, trie: Trie<String>,prefix:String){
+    guard let fileURL = Bundle.main.path(forResource: dictfile ,ofType:"txt") else {
+        fatalError("File not found:\(dictfile)")
+    }
+
+    guard let reader = LineReader(path: fileURL) else {
+        print("cannot open file \(dictfile)")
+        return; // cannot open file
+    }
+
+    for line in reader {
+        let line2 = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        var parts = line2.split(separator: " ")
+        if parts.count >= 2 {
+            let val = parts[0]
+            parts.removeFirst()
+            trie.insert(word: String(val), value: parts.map({s in String.init(prefix+s)}))
+        }
+    }
+}
+
+extension String {
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+
+    func substring(from: Int) -> String {
+        let fromIndex = index(from: from)
+        return String(self[fromIndex...])
+    }
+
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return String(self[..<toIndex])
+    }
+
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return String(self[startIndex..<endIndex])
+    }
+}
 
 class Context: NSObject {
     private var database: OpaquePointer?
     private var queryStatement: OpaquePointer?
     private var preferencesObserver: Defaults.Observation!
+    private var dataTree:Trie<String>?
 
     override init() {
         super.init()
 
-        sqlite3_open(Bundle.main.path(forResource: "table", ofType: "sqlite"), &database)
-        self.prepareStatement()
+        self.buildDictTrie()
 
         preferencesObserver = Defaults.observe(keys: .codeMode, .candidateCount) { () in
-            self.prepareStatement()
+            self.buildDictTrie()
         }
     }
 
@@ -71,40 +112,10 @@ class Context: NSObject {
         preferencesObserver.invalidate()
     }
 
-    private func getStatementSql() -> String {
-        let codeMode = Defaults[.codeMode]
-        let tableType = codeMode == .wubiPinyin ? "" : "type = '\(codeMode == .pinyin ? "py" : "wb")' and "
-        let candidateCount = Defaults[.candidateCount]
-        let sql = """
-        select
-            case when t2.type = 'wb' then min(t1.code) else max(t1.code) end as code,
-            t1.text,
-            t2.type
-        from
-            dict_default t1
-            inner join
-                (select min(id) as id,
-                code, text, type
-                from dict_default
-                where \(tableType)code like :query
-                group by id, text
-                order by length(code)) t2
-            on t1.text = t2.text and t1.type = 'wb'
-        group by t1.text
-        order by case when t2.code = :code then t2.id
-             when t2.code like :query then 10000000 + t2.id end
-        limit :offset, \(candidateCount)
-        """
-        print(sql)
-        return sql
-    }
-
-    private func prepareStatement() {
-        if sqlite3_prepare_v2(database, getStatementSql(), -1, &queryStatement, nil) == SQLITE_OK {
-            print("prepare ok")
-            print(sqlite3_bind_parameter_index(queryStatement, ":code"))
-            print(sqlite3_bind_parameter_count(queryStatement))
-        }
+    private func buildDictTrie() {
+        self.dataTree = Trie<String>.init()
+        dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
+        dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
     }
 
     var server: IMKServer = IMKServer.init(name: kConnectionName, bundleIdentifier: Bundle.main.bundleIdentifier)
@@ -114,30 +125,27 @@ class Context: NSObject {
         }
         NSLog("get local candidate, origin: \(origin)")
 //        var db: OpaquePointer?
+        let limit = 6
+        let offset = (page - 1) * limit
+        guard let queryRets = self.dataTree?.find(keyword: origin, offset: Int8(offset), limit: Int8(limit)) else {
+            return []
+        }
+ 
         var candidates: [Candidate] = []
-        sqlite3_reset(queryStatement)
-        sqlite3_clear_bindings(queryStatement)
-        sqlite3_bind_text(queryStatement,
-                        sqlite3_bind_parameter_index(queryStatement, ":code"),
-                        origin, -1,
-                        SQLITE_TRANSIENT
-        )
-        sqlite3_bind_text(queryStatement,
-                          sqlite3_bind_parameter_index(queryStatement, ":query"),
-                          "\(origin)%", -1,
-                          SQLITE_TRANSIENT
-        )
-        sqlite3_bind_int(queryStatement,
-                         sqlite3_bind_parameter_index(queryStatement, ":offset"),
-                         Int32((page - 1) * Defaults[.candidateCount])
-        )
-        let strp = sqlite3_expanded_sql(queryStatement)!
-        print(String(cString: strp))
-        while sqlite3_step(queryStatement) == SQLITE_ROW {
-            let code = String.init(cString: sqlite3_column_text(queryStatement, 0))
-            let text = String.init(cString: sqlite3_column_text(queryStatement, 1))
-            let type = String.init(cString: sqlite3_column_text(queryStatement, 2))
-            let candidate = Candidate(code: code, text: text, type: type)
+        for item in queryRets {
+            let first = item.value.dropFirst();
+            var type:String
+            if first == "2" {
+                type = "py"
+            }else {
+                type = "wb"
+            }
+            
+            var text = item.value.substring(from: 1)
+            if item.code.count != 0 {
+                text = "\(text)~\(item.code)"
+            }
+            let candidate = Candidate(code: item.code, text: text, type: type)
             candidates.append(candidate)
         }
         return candidates

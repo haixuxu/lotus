@@ -142,19 +142,23 @@ class LotusInputController: IMKInputController {
             self.toggleMode()
             return true
         }
+        // +/-/arrowdown/arrowup翻页
+        let keyCode = event.keyCode
+        
+       
+        
+        NSLog("inputMode:\(_mode),eventType:\(event.type),code:\(event.keyCode)")
         // 监听.flagsChanged事件只为切换中英文，其它情况不处理
         // 当用户已经按下了非shift的修饰键时，不处理
         if event.type == .flagsChanged || (event.modifierFlags != .init(rawValue: 0) && event.modifierFlags != .shift) {
             return false
         }
-
+       
         // 英文输入模式, 不做任何处理
         if _mode == .enUS {
             return false
         }
 
-        // +/-/arrowdown/arrowup翻页
-        let keyCode = event.keyCode
         if _mode == .zhhans && _originalString.count > 0 {
             if keyCode == kVK_ANSI_Equal || keyCode == kVK_DownArrow {
                 _page += 1
@@ -211,7 +215,9 @@ class LotusInputController: IMKInputController {
             let index = pos - 1
             let candidates = self.getCandidates(sender)
             if index < candidates.count {
+                let cnd = candidates[index]
                 _composedString = candidates[index].text
+                NSLog("input===>type:\(cnd.type),text:\(cnd.text),code:\(cnd.code)")
                 insertText(sender)
             } else {
                 _originalString += string
@@ -232,6 +238,8 @@ class LotusInputController: IMKInputController {
             let first = self.getCandidates(sender).first
             if first != nil {
                 _composedString = first!.text
+                let cnd = first!
+                NSLog("input===>type:\(cnd.type),text:\(cnd.text),code:\(cnd.code)")
                 insertText(sender)
                 _candidatesWindow.close()
             }
@@ -241,6 +249,7 @@ class LotusInputController: IMKInputController {
     }
 
     func getCandidates(_ sender: Any!) -> [Candidate] {
+        NSLog("_page===\(_page)")
         let candidates = Context.shared.getCandidates(origin: self._originalString, page: _page)
         return candidates
     }
@@ -342,7 +351,7 @@ class LotusInputController: IMKInputController {
 
     override func menu() -> NSMenu! {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "关于小草输入法", action: #selector(openAbout(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "关于", action: #selector(openAbout(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "检查更新", action: #selector(checkForUpdates(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "首选项", action: #selector(showPreferences(_:)), keyEquivalent: ""))
         return menu

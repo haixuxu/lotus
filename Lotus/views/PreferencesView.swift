@@ -14,7 +14,7 @@ import Defaults
 
 struct GeneralPane: View {
 
-    @Default(.codeMode) private var code
+    @Default(.codeStrategy) private var codingStrategy
     @Default(.candidateCount) private var candidateCount
     @Default(.wubiAutoCommit) private var wubiAutoCommit
     @Default(.wubiCodeTip) private var wubiCodeTip
@@ -24,10 +24,10 @@ struct GeneralPane: View {
             Preferences.Section(title: "") {
                 VStack(alignment: .leading, spacing: 18) {
                     HStack {
-                        Picker("编码方案", selection: $code) {
-                            Text("五笔").tag(CodeMode.wubi)
-                            Text("拼音").tag(CodeMode.pinyin)
-                            Text("五笔拼音混合").tag(CodeMode.wubiPinyin)
+                        Picker("编码方案", selection: $codingStrategy) {
+                            Text("五笔").tag(CodingStrategy.wubi)
+                            Text("拼音").tag(CodingStrategy.pinyin)
+                            Text("五笔拼音混合").tag(CodingStrategy.wubiPinyin)
                         }
                         Spacer(minLength: 50)
                         Picker("候选词数量", selection: $candidateCount) {

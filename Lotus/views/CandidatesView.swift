@@ -80,6 +80,9 @@ struct ContentView_Previews: PreviewProvider {
             Candidate(code: "ab", text: "戈", type: "wb"),
             Candidate(code: "abc", text: "啊", type: "wb"),
             Candidate(code: "abcg", text: "阿", type: "wb"),
+            Candidate(code: "adda", text: "吖", type: "wb"),
+            Candidate(code: "addb", text: "吖", type: "wb"),
+            Candidate(code: "addc", text: "吖", type: "wb"),
             Candidate(code: "addd", text: "吖", type: "wb")
         ], origin: "a")
     }

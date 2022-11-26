@@ -83,7 +83,7 @@ class LotusInputController: IMKInputController {
                 self._page = 1
                 return
             }
-            NSLog("[LotusInputController] original changed: \(self._originalString), refresh window")
+            NSLog("[Controller] original changed: \(self._originalString), refresh window")
 
             // 必须要mark originalString, 否则在某些APP中会有问题
             let attrs = mark(forStyle: kTSMHiliteConvertedText, at: NSRange(location: NSNotFound, length: 0))
@@ -103,7 +103,7 @@ class LotusInputController: IMKInputController {
     private var _page: Int = 1 {
         didSet(old) {
             guard old == self._page else {
-                NSLog("[LotusInputHandler] page changed")
+                NSLog("[Controller] page changed")
                 self.refreshCandidatesWindow()
                 return
             }
@@ -111,24 +111,8 @@ class LotusInputController: IMKInputController {
     }
 
     override init!(server: IMKServer!, delegate: Any!, client inputClient: Any!) {
-        NSLog("[LotusInputController] init")
-
+        NSLog("[Controller] init")
         super.init(server: server, delegate: delegate, client: inputClient)
-
-        /* NSLog("observer: NetCandidatesUpdate-\(client().bundleIdentifier() ?? "Lotus")")
-        let notificationName = NSNotification.Name(
-            rawValue: "NetCandidatesUpdate-\(client().bundleIdentifier() ?? "Lotus")")
-        NotificationCenter.default.addObserver(
-            forName: notificationName,
-            object: nil,
-            queue: nil
-        ) { (notification) in
-            guard let list = notification.object as? [Candidate] else { return }
-            DispatchQueue.main.async {
-                let candidate = list.count > 0 ? list.first! : nil
-                self._candidatesWindow.updateNetCandidateView(candidate: candidate)
-            }
-        } */
     }
 
     override func recognizedEvents(_ sender: Any!) -> Int {
@@ -136,7 +120,7 @@ class LotusInputController: IMKInputController {
     }
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
-        NSLog("[LotusInputController] handle: \(event.debugDescription)")
+        NSLog("[Controller] handle: \(event.debugDescription)")
         // 只有在shift keyup时，才切换中英文输入, 否则会导致shift+[a-z]大写的功能失效
         if Utils.shared.checkShiftKeyUp(event)! {
             self.toggleMode()
@@ -250,7 +234,7 @@ class LotusInputController: IMKInputController {
 
     func getCandidates(_ sender: Any!) -> [Candidate] {
         NSLog("_page===\(_page)")
-        let candidates = Context.shared.getCandidates(origin: self._originalString, page: _page)
+        let candidates = InputEngine.server.getCandidates(origin: self._originalString, page: _page)
         return candidates
     }
 
@@ -275,7 +259,8 @@ class LotusInputController: IMKInputController {
     // 往输入框插入当前字符
     func insertText(_ sender: Any!) {
         NSLog("insertText: %@", _composedString)
-        let value = NSAttributedString(string: _composedString)
+        let uptext = _composedString.replacingOccurrences(of: "~.*", with: "",options: [.regularExpression])
+        let value = NSAttributedString(string: uptext)
         client().insertText(value, replacementRange: replacementRange())
         clean()
     }
@@ -288,7 +273,7 @@ class LotusInputController: IMKInputController {
     }
 
     func toggleMode() {
-        NSLog("[LotusInputController]toggle mode: \(_mode)")
+        NSLog("[Controller]toggle mode: \(_mode)")
 
         // 把当前未上屏的原始code上屏处理
         _composedString = _originalString
@@ -307,7 +292,7 @@ class LotusInputController: IMKInputController {
     }
 
     func clean() {
-        NSLog("[LotusInputController] clean")
+        NSLog("[Controller] clean")
         _originalString = ""
         _composedString = ""
         _page = 1
@@ -323,38 +308,11 @@ class LotusInputController: IMKInputController {
     }
 
     override func activateServer(_ sender: Any!) {
-        NSLog("[LotusInputController] active server: \(client()!.bundleIdentifier()!)")
+        NSLog("[Controller] active server: \(client()!.bundleIdentifier()!)")
     }
 
     override func deactivateServer(_ sender: Any!) {
-        NSLog("[LotusInputController] deactivate server: \(client()!.bundleIdentifier()!)")
+        NSLog("[Controller] deactivate server: \(client()!.bundleIdentifier()!)")
         clean()
     }
-
-    /* -- menu actions start -- */
-
-    @objc func openAbout (_ sender: Any!) {
-        NSLog("open about")
-        DispatchQueue.main.async {
-            NSLog("check updates")
-            NSApp.orderFrontStandardAboutPanel(sender)
-        }
-    }
-
-    @objc func checkForUpdates(_ sender: Any!) {
-        SUUpdater.shared()?.checkForUpdates(sender)
-    }
-
-    override func showPreferences(_ sender: Any!) {
-        preferencesWindowController.show()
-    }
-
-    override func menu() -> NSMenu! {
-        let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "关于", action: #selector(openAbout(_:)), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "检查更新", action: #selector(checkForUpdates(_:)), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "首选项", action: #selector(showPreferences(_:)), keyEquivalent: ""))
-        return menu
-    }
-
 }

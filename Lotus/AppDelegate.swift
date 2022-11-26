@@ -13,8 +13,8 @@ import Defaults
 extension Defaults.Keys {
     static let wubiCodeTip = Key<Bool>("wubiCodeTip", default: true)
     static let wubiAutoCommit = Key<Bool>("wubiAutoCommit", default: false)
-    static let candidateCount = Key<Int>("candidateCount", default: 5)
-    static let codeMode = Key<CodeMode>("codeMode", default: CodeMode.wubiPinyin)
+    static let candidateCount = Key<Int>("candidateCount", default: 6)
+    static let codeStrategy = Key<CodingStrategy>("codingStrategy", default: CodingStrategy.wubiPinyin)
     //            ^            ^         ^                ^
     //           Key          Type   UserDefaults name   Default value
 }
@@ -25,9 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var server = IMKServer()
     var candidatesWindow = IMKCandidates()
     
-    let ctx: Context
+    let ieServer: InputEngine
     override init() {
-        ctx = Context.shared
+        ieServer = InputEngine.server
    }
    func applicationDidFinishLaunching(_ aNotification: Notification) {
        if CommandLine.arguments.count > 1 {
@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                return
            }
        }
-       NSLog("launch input source")
+       NSLog("launch application")
    }
     
     func applicationWillTerminate(_ notification: Notification) {

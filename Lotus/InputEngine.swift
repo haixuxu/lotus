@@ -48,40 +48,32 @@ func dictAppendTrie(dictfile: String, trie: Trie,prefix:String){
 }
 
 class InputEngine: NSObject {
-    private var preferencesObserver: Defaults.Observation!
     private var dataTree:Trie?
     private var suggestCount:Int = 6
+    private var strategy:CodingStrategy = CodingStrategy.wubiPinyin
 
     override init() {
         super.init()
         self.suggestCount = Defaults[.candidateCount]
+        self.strategy = Defaults[.codeStrategy]
+        NSLog("Engine:\(self.strategy),\(self.suggestCount)")
         self.buildDictTrie()
-
-        preferencesObserver = Defaults.observe(.candidateCount) { (val) in
+        
+        Defaults.observe(keys: .candidateCount, .codeStrategy) { () in
             self.suggestCount = Defaults[.candidateCount]
-            print("====observe===\(Defaults[.candidateCount]) val:\(val.newValue)")
-        }.tieToLifetime(of: self)
-        preferencesObserver = Defaults.observe(.codeStrategy) { (val) in
-            self.buildDictTrie()
+            self.strategy = Defaults[.codeStrategy]
         }.tieToLifetime(of: self)
     }
 
     deinit {
-        preferencesObserver.invalidate()
+        dataTree = nil
     }
 
     private func buildDictTrie() {
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
-        let strategy = Defaults[.codeStrategy]
-        if strategy == CodingStrategy.pinyin {
-            dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
-        }else if strategy == CodingStrategy.wubi {
-            dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
-        }else {
-            dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
-            dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
-        }
+        dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
+        dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
         dictAppendTrie(dictfile: "sp_table", trie: dataTree!,prefix:"3")
         
         let endtime =  Date().currentTimeMillis()
@@ -100,9 +92,22 @@ class InputEngine: NSObject {
         var start = 0;
         let offset = (page - 1) * limit
         var candidates: [Candidate] = []
+        let starttime =  Date().currentTimeMillis()
         self.dataTree?.find(keyword: origin, callback:  { (code,value) in
+            if value.count < 2 {
+                return false
+            }
+            let first = value.substring(to: 1)
+            let value2 = value.dropFirst(); // delete one return
+            NSLog("first==\(value)===\(first),\(self.strategy), \(CodingStrategy.wubi)")
+            if self.strategy == CodingStrategy.wubi && first == "2" {
+                return false;
+            }
+            if self.strategy == CodingStrategy.pinyin && first == "1" {
+                return false;
+            }
             if start >= offset {
-                let suggest = self.buildSuggest(code: code, value: value)
+                let suggest = self.buildSuggest(code: code, value: String(value2),type:first)
                 candidates.append(suggest)
             }
             start = start + 1
@@ -112,21 +117,13 @@ class InputEngine: NSObject {
                 return false
             }
         })
+        let endtime =  Date().currentTimeMillis()
+        print("keyword find time:\(endtime-starttime)ms")
         return candidates
     }
     
-    func buildSuggest(code:String,value:String)->Candidate {
-        let first = value.dropFirst();
-        var type:String = "custom"
-        if first == "1" {
-            type = "wb"
-        }else if  first == "2" {
-            type = "py"
-        }else if first == "3"{
-            type = "sp"
-        }
-        
-        var text = value.substring(from: 1)
+    func buildSuggest(code:String,value:String, type:String)->Candidate {
+        var text = value
         if code.count != 0 {
             text = "\(text)~\(code)"
         }

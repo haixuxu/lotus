@@ -12,7 +12,7 @@ import Sparkle
 import Preferences
 
 extension   LotusInputController {
-
+    
     @objc func openAbout (_ sender: Any!) {
         NSLog("open about==")
         DispatchQueue.main.async {

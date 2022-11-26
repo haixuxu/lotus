@@ -11,7 +11,7 @@ import InputMethodKit
 import Sparkle
 import Preferences
 
-extension   LotusInputController {
+extension  LotusInputController {
     
     @objc func openAbout (_ sender: Any!) {
         NSLog("open about==")
@@ -28,7 +28,8 @@ extension   LotusInputController {
 
     override func showPreferences(_ sender: Any!) {
         NSLog("show preference==")
-        preferencesWindowController.show()
+//        preferencesWindowController.show()
+        LotusPreferencesController.shared.controller.show()
     }
 
     override func menu() -> NSMenu! {

@@ -12,10 +12,9 @@
 		BF09CE64292B62DF006BD496 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE66292B62DF006BD496 /* InfoPlist.strings */; };
 		BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF09CE6C292B63DE006BD496 /* Localizable.strings */; };
 		BF0DC261292DFA030061514A /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0DC260292DFA030061514A /* Trie.swift */; };
-		BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D45F292A96E700BDB452 /* PreferencesView.swift */; };
 		BF19D462292A97FC00BDB452 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D461292A97FC00BDB452 /* Utils.swift */; };
 		BF19D464292A982700BDB452 /* InputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D463292A982700BDB452 /* InputSource.swift */; };
-		BF19D466292A984400BDB452 /* InputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D465292A984400BDB452 /* InputEngine.swift */; };
+		BF19D466292A984400BDB452 /* Lotus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D465292A984400BDB452 /* Lotus.swift */; };
 		BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D467292A98A100BDB452 /* CandidatesView.swift */; };
 		BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */; };
 		BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF19D46B292A992D00BDB452 /* MainMenu.xib */; };
@@ -27,11 +26,15 @@
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
 		BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027B12928D70B0020BA76 /* LotusInputController.swift */; };
 		BF4027B62928D7570020BA76 /* lotus.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* lotus.icns */; };
-		BF6094AB2931B05400E04E87 /* ToolBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AA2931B05400E04E87 /* ToolBarItems.swift */; };
+		BF6094AB2931B05400E04E87 /* LotusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AA2931B05400E04E87 /* LotusMenu.swift */; };
 		BF6094AD2931B22200E04E87 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AC2931B22200E04E87 /* String.swift */; };
 		BF6094AF2931C4AA00E04E87 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AE2931C4AA00E04E87 /* Date.swift */; };
 		BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */; };
-		BF987946293250CC00849B0E /* LotusPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF987945293250CC00849B0E /* LotusPreferencesController.swift */; };
+		BF98794A29326CC000849B0E /* LotusPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794929326CC000849B0E /* LotusPreferencesController.swift */; };
+		BF98794C29326CF700849B0E /* GeneralPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794B29326CF700849B0E /* GeneralPane.swift */; };
+		BF98794E29326D6000849B0E /* WordStockPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794D29326D6000849B0E /* WordStockPane.swift */; };
+		BF9879502932778800849B0E /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794F2932778800849B0E /* types.swift */; };
+		BF9879522932799800849B0E /* TipsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9879512932799800849B0E /* TipsWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,10 +64,9 @@
 		BF09CE6B292B63DE006BD496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF09CE6D292B63E1006BD496 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BF0DC260292DFA030061514A /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
-		BF19D45F292A96E700BDB452 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		BF19D461292A97FC00BDB452 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BF19D463292A982700BDB452 /* InputSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSource.swift; sourceTree = "<group>"; };
-		BF19D465292A984400BDB452 /* InputEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEngine.swift; sourceTree = "<group>"; };
+		BF19D465292A984400BDB452 /* Lotus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotus.swift; sourceTree = "<group>"; };
 		BF19D467292A98A100BDB452 /* CandidatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesView.swift; sourceTree = "<group>"; };
 		BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatesWindow.swift; sourceTree = "<group>"; };
 		BF19D46B292A992D00BDB452 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -77,11 +79,15 @@
 		BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4027B12928D70B0020BA76 /* LotusInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusInputController.swift; sourceTree = "<group>"; };
 		BF4027B52928D7570020BA76 /* lotus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = lotus.icns; path = ../../../Desktop/lotus.icns; sourceTree = "<group>"; };
-		BF6094AA2931B05400E04E87 /* ToolBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarItems.swift; sourceTree = "<group>"; };
+		BF6094AA2931B05400E04E87 /* LotusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusMenu.swift; sourceTree = "<group>"; };
 		BF6094AC2931B22200E04E87 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BF6094AE2931C4AA00E04E87 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon64.icns; sourceTree = "<group>"; };
-		BF987945293250CC00849B0E /* LotusPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusPreferencesController.swift; sourceTree = "<group>"; };
+		BF98794929326CC000849B0E /* LotusPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusPreferencesController.swift; sourceTree = "<group>"; };
+		BF98794B29326CF700849B0E /* GeneralPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPane.swift; sourceTree = "<group>"; };
+		BF98794D29326D6000849B0E /* WordStockPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStockPane.swift; sourceTree = "<group>"; };
+		BF98794F2932778800849B0E /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
+		BF9879512932799800849B0E /* TipsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsWindow.swift; sourceTree = "<group>"; };
 		CBA2C0C1E35F31CE00DD8896 /* libPods-Lotus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lotus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE93A338CB687328DEF40A5 /* Pods-Lotus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lotus.debug.xcconfig"; path = "Target Support Files/Pods-Lotus/Pods-Lotus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,10 +137,9 @@
 		BF148925292BC40C00BC6976 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				BF19D45F292A96E700BDB452 /* PreferencesView.swift */,
-				BF19D467292A98A100BDB452 /* CandidatesView.swift */,
-				BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */,
-				BF987945293250CC00849B0E /* LotusPreferencesController.swift */,
+				BF98794929326CC000849B0E /* LotusPreferencesController.swift */,
+				BF98794B29326CF700849B0E /* GeneralPane.swift */,
+				BF98794D29326D6000849B0E /* WordStockPane.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -172,10 +177,13 @@
 				BF6094A92931AF8300E04E87 /* Utils */,
 				BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */,
 				BF4027B12928D70B0020BA76 /* LotusInputController.swift */,
-				BF6094AA2931B05400E04E87 /* ToolBarItems.swift */,
+				BF6094AA2931B05400E04E87 /* LotusMenu.swift */,
+				BF19D465292A984400BDB452 /* Lotus.swift */,
+				BF19D467292A98A100BDB452 /* CandidatesView.swift */,
+				BF19D469292A98CE00BDB452 /* CandidatesWindow.swift */,
 				BF19D461292A97FC00BDB452 /* Utils.swift */,
 				BF19D463292A982700BDB452 /* InputSource.swift */,
-				BF19D465292A984400BDB452 /* InputEngine.swift */,
+				BF98794F2932778800849B0E /* types.swift */,
 				BF19D46B292A992D00BDB452 /* MainMenu.xib */,
 				BF09CE66292B62DF006BD496 /* InfoPlist.strings */,
 				BF09CE6C292B63DE006BD496 /* Localizable.strings */,
@@ -198,6 +206,7 @@
 				BF0DC260292DFA030061514A /* Trie.swift */,
 				BF6094AC2931B22200E04E87 /* String.swift */,
 				BF6094AE2931C4AA00E04E87 /* Date.swift */,
+				BF9879512932799800849B0E /* TipsWindow.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,16 +339,19 @@
 			files = (
 				BF221A91292F464900C05C87 /* LineReader.swift in Sources */,
 				BF19D462292A97FC00BDB452 /* Utils.swift in Sources */,
+				BF98794E29326D6000849B0E /* WordStockPane.swift in Sources */,
 				BF19D464292A982700BDB452 /* InputSource.swift in Sources */,
 				BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */,
-				BF987946293250CC00849B0E /* LotusPreferencesController.swift in Sources */,
-				BF6094AB2931B05400E04E87 /* ToolBarItems.swift in Sources */,
+				BF98794A29326CC000849B0E /* LotusPreferencesController.swift in Sources */,
+				BF6094AB2931B05400E04E87 /* LotusMenu.swift in Sources */,
 				BF19D46A292A98CE00BDB452 /* CandidatesWindow.swift in Sources */,
 				BF0DC261292DFA030061514A /* Trie.swift in Sources */,
-				BF19D460292A96E700BDB452 /* PreferencesView.swift in Sources */,
 				BF6094AD2931B22200E04E87 /* String.swift in Sources */,
 				BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */,
-				BF19D466292A984400BDB452 /* InputEngine.swift in Sources */,
+				BF9879502932778800849B0E /* types.swift in Sources */,
+				BF9879522932799800849B0E /* TipsWindow.swift in Sources */,
+				BF98794C29326CF700849B0E /* GeneralPane.swift in Sources */,
+				BF19D466292A984400BDB452 /* Lotus.swift in Sources */,
 				BF6094AF2931C4AA00E04E87 /* Date.swift in Sources */,
 				BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */,
 			);

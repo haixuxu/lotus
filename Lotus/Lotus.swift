@@ -8,46 +8,14 @@
 import Foundation
 import Cocoa
 import InputMethodKit
-import SQLite3
+//import SQLite3
 import Sparkle
 import Defaults
 
 let kConnectionName = "Lotus_90_Connection"
 
-struct Candidate: Hashable {
-    let code: String
-    let text: String
-    let type: String  // custom | wb | py | sp
-}
+class Lotus: NSObject {
 
-enum CodingStrategy: Int, CaseIterable, Decodable, Encodable {
-    case wubi
-    case pinyin
-    case wubiPinyin
-}
-
-func dictAppendTrie(dictfile: String, trie: Trie,prefix:String){
-    guard let fileURL = Bundle.main.path(forResource: dictfile ,ofType:"txt") else {
-        fatalError("File not found:\(dictfile)")
-    }
-
-    guard let reader = LineReader(path: fileURL) else {
-        print("cannot open file \(dictfile)")
-        return; // cannot open file
-    }
-
-    for line in reader {
-        let line2 = line.trimmingCharacters(in: .whitespacesAndNewlines)
-        var parts = line2.split(separator: " ")
-        if parts.count >= 2 {
-            let val = parts[0]
-            parts.removeFirst()
-            trie.insert(word: String(val), value: parts.map({s in String.init(prefix+s)}))
-        }
-    }
-}
-
-class InputEngine: NSObject {
     private var dataTree:Trie?
     private var suggestCount:Int = 6
     private var strategy:CodingStrategy = CodingStrategy.wubiPinyin
@@ -56,7 +24,7 @@ class InputEngine: NSObject {
         super.init()
         self.suggestCount = Defaults[.candidateCount]
         self.strategy = Defaults[.codeStrategy]
-        NSLog("Engine:\(self.strategy),\(self.suggestCount)")
+        NSLog("Config==:\(self.strategy),\(self.suggestCount)")
         self.buildDictTrie()
         
         Defaults.observe(keys: .candidateCount, .codeStrategy) { () in
@@ -69,12 +37,12 @@ class InputEngine: NSObject {
         dataTree = nil
     }
 
-    private func buildDictTrie() {
+    public func buildDictTrie() {
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
-        dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
-        dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
-        dictAppendTrie(dictfile: "sp_table", trie: dataTree!,prefix:"3")
+        Utils.shared.dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
+        Utils.shared.dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
+        Utils.shared.dictAppendTrie(dictfile: "sp_table", trie: dataTree!,prefix:"3")
         
         let endtime =  Date().currentTimeMillis()
 
@@ -130,5 +98,5 @@ class InputEngine: NSObject {
         return Candidate(code: code, text: text, type: type)
     }
     
-    static let server = InputEngine()
+    static let shared = Lotus()
 }

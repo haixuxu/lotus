@@ -11,42 +11,8 @@ import InputMethodKit
 
 class Utils {
 
+    let tipsWindow = TipsWindow()
     var checkShiftKeyUp: (NSEvent) -> Bool?
-
-    func showTips(_ text: String, origin: NSPoint) {
-        NSLog("[utils] showTips: \(origin)")
-        hideTipsWindowTimer?.invalidate()
-        if tipsWindow?.isVisible ?? false {
-            tipsWindow?.close()
-        }
-        let window = NSWindow()
-        window.styleMask = .init(arrayLiteral: .borderless, .fullSizeContentView)
-
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.center
-        let textField = NSTextField(labelWithAttributedString: NSAttributedString(
-            string: text,
-            attributes: [
-                NSAttributedString.Key.font: NSFont.userFont(ofSize: 20)!,
-                NSAttributedString.Key.paragraphStyle: paragraphStyle
-            ]
-        ))
-        textField.setFrameSize(NSSize(width: 30, height: 24))
-        textField.alignment = .center
-        window.contentView?.addSubview(textField)
-        window.isReleasedWhenClosed = false
-        window.level = NSWindow.Level(rawValue: NSWindow.Level.RawValue(CGShieldingWindowLevel() + 2))
-
-        window.setFrame(NSRect(x: origin.x, y: origin.y - 24, width: 30, height: 24), display: true)
-        window.orderFront(nil)
-        tipsWindow = window
-        hideTipsWindowTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
-            self.tipsWindow?.close()
-        }
-    }
-   
-
-    private var tipsWindow: NSWindow?
     private var hideTipsWindowTimer: Timer?
 
     init() {
@@ -68,5 +34,53 @@ class Utils {
         self.checkShiftKeyUp = createCheckShiftKeyUpFn()
     }
 
+    func processHandlers<T>(
+            handlers: [(NSEvent) -> T?]
+        ) -> ((NSEvent) -> T?) {
+            func handleFn(event: NSEvent) -> T? {
+                var count = 0
+                for handler in handlers {
+                    count = count + 1
+                    if let result = handler(event) {
+                        NSLog("result====\(result)")
+                        return result
+                    }
+                }
+                NSLog("=====result=>\(count)")
+                return nil
+            }
+            return handleFn
+        }
+    
+    func getScreenFromPoint(_ point: NSPoint) -> NSScreen? {
+           // find current screen
+           for screen in NSScreen.screens {
+               if screen.frame.contains(point) {
+                   return screen
+               }
+           }
+           return NSScreen.main
+       }
+    
+    func dictAppendTrie(dictfile: String, trie: Trie,prefix:String){
+        guard let fileURL = Bundle.main.path(forResource: dictfile ,ofType:"txt") else {
+            fatalError("File not found:\(dictfile)")
+        }
+
+        guard let reader = LineReader(path: fileURL) else {
+            print("cannot open file \(dictfile)")
+            return; // cannot open file
+        }
+
+        for line in reader {
+            let line2 = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            var parts = line2.split(separator: " ")
+            if parts.count >= 2 {
+                let val = parts[0]
+                parts.removeFirst()
+                trie.insert(word: String(val), value: parts.map({s in String.init(prefix+s)}))
+            }
+        }
+    }
     static let shared = Utils()
 }

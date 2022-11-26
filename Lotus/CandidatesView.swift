@@ -4,9 +4,8 @@
 //
 //  Created by xuxihai on 2022/11/21.
 //
-
-import Foundation
 import SwiftUI
+import Defaults
 
 func getShownCode(candidate: Candidate, origin: String) -> String {
     if candidate.type == "py" {
@@ -21,7 +20,6 @@ struct CandidateView: View {
     var index: Int
     var origin: String
     var selected: Bool = false
-
     var body: some View {
         let mainColor = selected
             ? Color(red: 0.863, green: 0.078, blue: 0.235)
@@ -34,9 +32,13 @@ struct CandidateView: View {
             Text(candidate.text)
                 .font(.system(size: 20))
                 .foregroundColor(mainColor)
-            Text(getShownCode(candidate: candidate, origin: origin))
-                .font(.system(size: 18))
-                .foregroundColor(.init(Color.RGBColorSpace.sRGBLinear, red: 0.3, green: 0.3, blue: 0.3, opacity: 0.8))
+            if Defaults[.wubiCodeTip] {
+                Text(getShownCode(candidate: candidate, origin: origin))
+                    .font(.system(size: 18))
+                    .foregroundColor(
+                        .init(Color.RGBColorSpace.sRGBLinear, red: 0.3, green: 0.3, blue: 0.3, opacity: 0.8)
+                    )
+            }
         }
         .fixedSize()
     }
@@ -46,33 +48,46 @@ struct CandidatesView: View {
     var candidates: [Candidate]
     var origin: String
 
+    let direction = Defaults[.candidatesDirection]
+
+    var _candidatesView: some View {
+        ForEach(Array(candidates.enumerated()), id: \.element) { (index, candidate) -> CandidateView in
+            CandidateView(
+                candidate: candidate,
+                index: index + 1,
+                origin: origin,
+                selected: index == 0
+            )
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
-            Text(origin)
-                .font(.system(size: 20))
-                .foregroundColor(.init(red: 0.3, green: 0.3, blue: 0.3))
-                .fixedSize()
-            HStack(alignment: .center, spacing: 8, content: {
-                var index = 0
-                ForEach(candidates, id: \.self) { (candidate) -> CandidateView in
-                    index += 1
-                    return CandidateView(
-                        candidate: candidate,
-                        index: index,
-                        origin: origin,
-                        selected: index == 1
-                    )
+            if Defaults[.showCodeInWindow] {
+                Text(origin)
+                    .font(.system(size: 20))
+                    .foregroundColor(.init(red: 0.3, green: 0.3, blue: 0.3))
+                    .fixedSize()
+            }
+            if Defaults[.candidatesDirection] == CandidatesDirection.horizontal {
+                HStack(alignment: .center, spacing: 8) {
+                    _candidatesView
                 }
-            })
-            .frame(alignment: .leading)
-            .fixedSize()
+                .fixedSize()
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    _candidatesView
+                }
+                .fixedSize()
+            }
         })
         .padding(.horizontal, 10.0)
         .padding(.vertical, 6)
+        .fixedSize()
+        .background(Color.white)
     }
 }
 
-// test
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         CandidatesView(candidates: [
@@ -80,10 +95,9 @@ struct ContentView_Previews: PreviewProvider {
             Candidate(code: "ab", text: "戈", type: "wb"),
             Candidate(code: "abc", text: "啊", type: "wb"),
             Candidate(code: "abcg", text: "阿", type: "wb"),
-            Candidate(code: "adda", text: "吖", type: "wb"),
-            Candidate(code: "addb", text: "吖", type: "wb"),
-            Candidate(code: "addc", text: "吖", type: "wb"),
             Candidate(code: "addd", text: "吖", type: "wb")
         ], origin: "a")
     }
 }
+
+

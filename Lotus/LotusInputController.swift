@@ -14,6 +14,9 @@ class LotusInputController: IMKInputController {
     private var  _composedString = ""
     private let candidatesWindow = CandidatesWindow.shared
     private var inputMode: InputMode = .zhhans
+    private var hasPrev:Bool = false
+    private var hasNext:Bool = false
+    private var candidates:[Candidate]?
     private var _originalString = "" {
         didSet {
             if self.curPage != 1 {
@@ -97,7 +100,9 @@ class LotusInputController: IMKInputController {
         NSLog("=======>\(keyCode)")
         if inputMode == .zhhans && _originalString.count > 0 {
             if keyCode == kVK_ANSI_Equal || keyCode == kVK_DownArrow {
-                curPage += 1
+                if (hasNext){
+                    curPage += 1
+                }
                 return true
             }
             if keyCode == kVK_ANSI_Minus || keyCode == kVK_UpArrow {
@@ -167,7 +172,7 @@ class LotusInputController: IMKInputController {
         // 当前输入的是数字,选择当前候选列表中的第N个字符 v
         if let pos = Int(string), _originalString.count > 0 {
             let index = pos - 1
-            let candidates = self.getCandidates(self)
+            guard let candidates = self.candidates else {return nil}
             if index < candidates.count {
                 _composedString = candidates[index].text
                 insertText(self)
@@ -193,7 +198,8 @@ class LotusInputController: IMKInputController {
     private func spaceKeyHandler(event: NSEvent) -> Bool? {
         // 空格键输入转换后的中文字符
         if event.keyCode == kVK_Space && _originalString.count > 0 {
-            if let first = self.getCandidates(self).first {
+            guard let candidates = self.candidates else {return nil}
+            if let first = candidates.first {
                 _composedString = first.text
                 insertText(self)
                 candidatesWindow.close()
@@ -223,14 +229,17 @@ class LotusInputController: IMKInputController {
         return handler(event) ?? false
     }
 
-    func getCandidates(_ sender: Any!) -> [Candidate] {
-        let candidates = Lotus.shared.getCandidates(origin: self._originalString, page: curPage)
-        return candidates
+    func queryCandidates(_ sender: Any!){
+        let result = Lotus.shared.getCandidates(origin: self._originalString, page: curPage)
+        self.hasNext = result.hasNext
+        self.hasPrev = result.hasPrev
+        self.candidates = result.list
     }
 
     // 更新候选窗口
     func refreshCandidatesWindow() {
-        let candidates = getCandidates(client())
+        queryCandidates(client())
+        let candidates = self.candidates!
         if Defaults[.wubiAutoCommit] && candidates.count == 1 && _originalString.count >= 4 {
             // 满4码唯一候选词自动上屏
             if let candidate = candidates.first {
@@ -245,6 +254,8 @@ class LotusInputController: IMKInputController {
             return
         }
         candidatesWindow.setCandidates(
+            hasPrev:self.hasPrev,
+            hasNext:self.hasNext,
             candidates: candidates,
             originalString: _originalString,
             topLeft: getOriginPoint()

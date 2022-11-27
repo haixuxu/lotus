@@ -26,6 +26,7 @@
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
 		BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027B12928D70B0020BA76 /* LotusInputController.swift */; };
 		BF4027B62928D7570020BA76 /* lotus.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* lotus.icns */; };
+		BF59FDF62933627400E42016 /* userdict.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF59FDF52933627400E42016 /* userdict.txt */; };
 		BF6094AB2931B05400E04E87 /* LotusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AA2931B05400E04E87 /* LotusMenu.swift */; };
 		BF6094AD2931B22200E04E87 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AC2931B22200E04E87 /* String.swift */; };
 		BF6094AF2931C4AA00E04E87 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AE2931C4AA00E04E87 /* Date.swift */; };
@@ -79,6 +80,7 @@
 		BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4027B12928D70B0020BA76 /* LotusInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusInputController.swift; sourceTree = "<group>"; };
 		BF4027B52928D7570020BA76 /* lotus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = lotus.icns; path = ../../../Desktop/lotus.icns; sourceTree = "<group>"; };
+		BF59FDF52933627400E42016 /* userdict.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userdict.txt; sourceTree = "<group>"; };
 		BF6094AA2931B05400E04E87 /* LotusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusMenu.swift; sourceTree = "<group>"; };
 		BF6094AC2931B22200E04E87 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BF6094AE2931C4AA00E04E87 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		BF09CE5C292B5A4B006BD496 /* dict */ = {
 			isa = PBXGroup;
 			children = (
+				BF59FDF52933627400E42016 /* userdict.txt */,
 				BF2F6A4D2930FEC6006A53E9 /* sp_table.txt */,
 				BF09CE5D292B5A74006BD496 /* py_table.txt */,
 				BF09CE5E292B5A74006BD496 /* wb_table.txt */,
@@ -284,6 +287,7 @@
 				BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */,
 				BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */,
 				BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */,
+				BF59FDF62933627400E42016 /* userdict.txt in Resources */,
 				BF09CE64292B62DF006BD496 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,8 +11,12 @@ func getShownCode(candidate: Candidate, origin: String) -> String {
     if candidate.type == "py" {
         return "(\(candidate.code))"
     }
-    return candidate.code.hasPrefix(origin) && candidate.code.count > origin.count
-        ? "~\(String(candidate.code.suffix(candidate.code.count - origin.count)))" : ""
+    if candidate.code.hasPrefix(origin) && candidate.code.count > origin.count {
+        let helpCount = candidate.code.count - origin.count
+        let suffix = String(candidate.code.suffix(helpCount));
+        return "~\(String(suffix))"
+    }
+    return ""
 }
 
 struct CandidateView: View {
@@ -20,6 +24,7 @@ struct CandidateView: View {
     var index: Int
     var origin: String
     var selected: Bool = false
+    
     var body: some View {
         let mainColor = selected
             ? Color(red: 0.863, green: 0.078, blue: 0.235)
@@ -47,7 +52,8 @@ struct CandidateView: View {
 struct CandidatesView: View {
     var candidates: [Candidate]
     var origin: String
-
+    var hasPrev: Bool = false
+    var hasNext: Bool = false
     let direction = Defaults[.candidatesDirection]
 
     var _candidatesView: some View {
@@ -60,6 +66,59 @@ struct CandidatesView: View {
             )
         }
     }
+    
+    var _indicator: some View {
+            if Defaults[.candidatesDirection] == CandidatesDirection.horizontal {
+                return AnyView(VStack(spacing: 0) {
+                    Image(hasPrev ? "arrowUp" : "arrowUpOff")
+                        .resizable()
+                        .frame(width: 10, height: 10, alignment: .center)
+                        .onTapGesture {
+                            if !hasPrev { return }
+                            NotificationCenter.default.post(
+                                name: Lotus.prevPageBtnTapped,
+                                object: nil
+                            )
+                        }
+                    Image(hasNext ? "arrowDown" : "arrowDownOff")
+                        .resizable()
+                        .frame(width: 10, height: 10, alignment: .center)
+                        .onTapGesture {
+                            if !hasNext { return }
+                            print("next")
+                            NotificationCenter.default.post(
+                                name: Lotus.nextPageBtnTapped,
+                                object: nil
+                            )
+                        }
+                })
+            }
+            return AnyView(HStack(spacing: 4) {
+                Image(hasPrev ? "arrowUp" : "arrowUpOff")
+                    .resizable()
+                    .frame(width: 10, height: 10, alignment: .center)
+                    .rotationEffect(Angle(degrees: -90), anchor: .center)
+                    .onTapGesture {
+                        if !hasPrev { return }
+                        NotificationCenter.default.post(
+                            name: Lotus.prevPageBtnTapped,
+                            object: nil
+                        )
+                    }
+                Image(hasNext ? "arrowDown" : "arrowDownOff")
+                    .resizable()
+                    .frame(width: 10, height: 10, alignment: .center)
+                    .rotationEffect(Angle(degrees: -90), anchor: .center)
+                    .onTapGesture {
+                        if !hasNext { return }
+                        print("next")
+                        NotificationCenter.default.post(
+                            name: Lotus.nextPageBtnTapped,
+                            object: nil
+                        )
+                    }
+            })
+        }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
@@ -72,11 +131,13 @@ struct CandidatesView: View {
             if Defaults[.candidatesDirection] == CandidatesDirection.horizontal {
                 HStack(alignment: .center, spacing: 8) {
                     _candidatesView
+                    _indicator
                 }
                 .fixedSize()
             } else {
                 VStack(alignment: .leading, spacing: 8) {
                     _candidatesView
+                    _indicator
                 }
                 .fixedSize()
             }

@@ -30,12 +30,16 @@ class CandidatesWindow: NSWindow, NSWindowDelegate {
     }
 
     func setCandidates(
+        hasPrev:Bool,
+        hasNext:Bool,
         candidates: [Candidate],
         originalString: String,
         topLeft: NSPoint
     ) {
         hostingView.rootView.candidates = candidates
         hostingView.rootView.origin = originalString
+        hostingView.rootView.hasPrev = hasPrev
+        hostingView.rootView.hasNext = hasNext
         print("origin top left: \(topLeft)")
         self.setFrameTopLeftPoint(topLeft)
         self.orderFront(nil)

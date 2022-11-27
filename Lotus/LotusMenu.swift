@@ -15,20 +15,20 @@ extension  LotusInputController {
     
     @objc func openAbout (_ sender: Any!) {
         NSLog("open about==")
-        DispatchQueue.main.async {
-            NSLog("check updates")
-            NSApp.orderFrontStandardAboutPanel(sender)
-        }
+        NSApp.setActivationPolicy(.regular)
+        NSApp.orderFrontStandardAboutPanel(sender)
     }
 
     @objc func checkForUpdates(_ sender: Any!) {
         NSLog("chekc update==")
+        NSApp.setActivationPolicy(.regular)
         SUUpdater.shared()?.checkForUpdates(sender)
     }
 
     override func showPreferences(_ sender: Any!) {
         NSLog("show preference==")
 //        preferencesWindowController.show()
+        NSApp.setActivationPolicy(.regular)
         LotusPreferencesController.shared.controller.show()
     }
 

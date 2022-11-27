@@ -1,0 +1,10 @@
+addr 北京市海淀区XXX号
+apps "App Store"
+appw Watch
+cell 18234116049
+date {date} {datetime} {datetime|yyyy年MM月dd日}
+edog 🐶
+escr 😂
+mail xuxihai123@gmail.com x373241884y@gmail.com
+qgg  https://qingg.im 清歌输入法
+zzem 常用Emoji 😂 🐶 👍 ❤️ 🙏

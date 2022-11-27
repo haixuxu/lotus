@@ -39,6 +39,12 @@ struct Candidate: Hashable {
     let type: String  // custom | wb | py | sp
 }
 
+struct CandidatesData {
+    var hasPrev:Bool
+    var hasNext:Bool
+    var list:[Candidate]
+}
+
 enum CodingStrategy: Int, CaseIterable, Decodable, Encodable {
     case wubi
     case pinyin

@@ -84,11 +84,11 @@ class Lotus: NSObject {
             if self.strategy == CodingStrategy.pinyin && first == "1" {
                 return false;
             }
-            if start >= offset && start <= last {
+            if start >= offset && start < last {
                 guard let type = prefixType[first] else {return false}
                 let suggest = self.buildSuggest(code: String(origin+code), value: value,type:type)
                 //
-                NSLog("append====\(start)")
+//                NSLog("append====\(start)")
                 queryRes.list.append(suggest)
             }
             start = start + 1

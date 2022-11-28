@@ -30,10 +30,13 @@ struct CandidateView: View {
             ? Color(red: 0.863, green: 0.078, blue: 0.235)
             : Color(red: 0.23, green: 0.23, blue: 0.23)
 
-        return HStack(alignment: .center, spacing: 2) {
+        return HStack(alignment: .center, spacing: 4) {
             Text("\(index).")
-                .font(.system(size: 20))
+                .frame(minWidth:  20, alignment: .trailing)
+                .font(.system(size: 18))
                 .foregroundColor(mainColor)
+
+                
             Text(candidate.text)
                 .font(.system(size: 20))
                 .foregroundColor(mainColor)
@@ -93,7 +96,7 @@ struct CandidatesView: View {
                         }
                 })
             }
-            return AnyView(HStack(spacing: 4) {
+        return AnyView(HStack( spacing: 4) {
                 Image(hasPrev ? "arrowUp" : "arrowUpOff")
                     .resizable()
                     .frame(width: 10, height: 10, alignment: .center)
@@ -156,7 +159,9 @@ struct ContentView_Previews: PreviewProvider {
             Candidate(code: "ab", text: "戈", type: "wb"),
             Candidate(code: "abc", text: "啊", type: "wb"),
             Candidate(code: "abcg", text: "阿", type: "wb"),
-            Candidate(code: "addd", text: "吖", type: "wb")
+            Candidate(code: "addd", text: "吖", type: "wb"),
+            Candidate(code: "adde", text: "若有", type: "wb"),
+            Candidate(code: "addf", text: "欺压", type: "wb"),
         ], origin: "a")
     }
 }

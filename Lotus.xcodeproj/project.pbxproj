@@ -25,7 +25,6 @@
 		BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4027882928D5F70020BA76 /* Assets.xcassets */; };
 		BF4027B02928D6EF0020BA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */; };
 		BF4027B22928D70B0020BA76 /* LotusInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4027B12928D70B0020BA76 /* LotusInputController.swift */; };
-		BF4027B62928D7570020BA76 /* lotus.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF4027B52928D7570020BA76 /* lotus.icns */; };
 		BF59FDF62933627400E42016 /* userdict.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF59FDF52933627400E42016 /* userdict.txt */; };
 		BF6094AB2931B05400E04E87 /* LotusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AA2931B05400E04E87 /* LotusMenu.swift */; };
 		BF6094AD2931B22200E04E87 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6094AC2931B22200E04E87 /* String.swift */; };
@@ -79,7 +78,6 @@
 		BF4027962928D5F70020BA76 /* LotusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusTests.swift; sourceTree = "<group>"; };
 		BF4027AF2928D6EF0020BA76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4027B12928D70B0020BA76 /* LotusInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusInputController.swift; sourceTree = "<group>"; };
-		BF4027B52928D7570020BA76 /* lotus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = lotus.icns; path = ../../../Desktop/lotus.icns; sourceTree = "<group>"; };
 		BF59FDF52933627400E42016 /* userdict.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userdict.txt; sourceTree = "<group>"; };
 		BF6094AA2931B05400E04E87 /* LotusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusMenu.swift; sourceTree = "<group>"; };
 		BF6094AC2931B22200E04E87 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				BF7AC8AB292BCDC3006E2EB4 /* icon64.icns */,
 				BF09CE5C292B5A4B006BD496 /* dict */,
 				BF09CE47292B5126006BD496 /* lotus_19x19.pdf */,
-				BF4027B52928D7570020BA76 /* lotus.icns */,
 				BF4027882928D5F70020BA76 /* Assets.xcassets */,
 				BF40278D2928D5F70020BA76 /* Lotus.entitlements */,
 				BF09CE4D292B529E006BD496 /* Info.plist */,
@@ -283,7 +280,6 @@
 				BF221A93292F51BA00C05C87 /* wb_table.txt in Resources */,
 				BF4027892928D5F70020BA76 /* Assets.xcassets in Resources */,
 				BF09CE45292B5126006BD496 /* lotus_19x19.pdf in Resources */,
-				BF4027B62928D7570020BA76 /* lotus.icns in Resources */,
 				BF09CE6A292B63DE006BD496 /* Localizable.strings in Resources */,
 				BF7AC8AC292BCDC3006E2EB4 /* icon64.icns in Resources */,
 				BF19D46C292A992D00BDB452 /* MainMenu.xib in Resources */,

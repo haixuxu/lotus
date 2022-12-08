@@ -13,7 +13,7 @@
 	<key>CFBundleIconFile</key>
 	<string>icon64.icns</string>
 	<key>CFBundleIconName</key>
-	<string>lotus</string>
+	<string>icon64</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.xuxihai.inputmethod.Lotus</string>
 	<key>CFBundleInfoDictionaryVersion</key>

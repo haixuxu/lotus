@@ -55,4 +55,8 @@ extension String {
             return []
         }
     }
+     func URLEncodedString() -> String? {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed);
+      }
+
 }

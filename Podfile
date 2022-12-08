@@ -11,9 +11,5 @@ target 'Lotus' do
   
   pod 'Defaults'
 
-  target 'LotusTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end

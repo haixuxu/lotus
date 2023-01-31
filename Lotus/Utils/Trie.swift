@@ -86,11 +86,17 @@ class Trie{
             let data = cnode.data
             if data != nil {
                 let code = paths.joined(separator: "")
-                for (_,ele) in data!.enumerated(){
+                for (index,ele) in data!.enumerated(){
+                    if keyword.hasPrefix("zz") && keyword.count==4 && index==0{
+                        continue
+                    }
                     let completed = callback(code, ele)
                     if completed {
                         finished = true
                         return
+                    }
+                    if keyword.hasPrefix("zz") && keyword.count<4 {
+                        break
                     }
                 }
             }

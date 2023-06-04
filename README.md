@@ -24,3 +24,11 @@
 6. 候选词横向/竖向排列支持
 7. 候选词数量可配置
 8. 候选窗口显示输入编码
+
+
+## 参考项目
+
+> 该项目部分代码来自qwertyyb/Fire, 如
+
+- https://github.com/qwertyyb/Fire
+- https://github.com/ensan-hcl/macOS_IMKitSample_2021

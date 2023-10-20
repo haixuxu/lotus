@@ -62,7 +62,7 @@ class Utils {
            return NSScreen.main
        }
     
-    func dictAppendTrie(dictfile: String, trie: Trie,prefix:String){
+    func parseDictKeyValue(dictfile: String, callback: (String,Array<Substring>)->Void){
         guard let fileURL = Bundle.main.path(forResource: dictfile ,ofType:"txt") else {
             fatalError("File not found:\(dictfile)")
         }
@@ -78,7 +78,7 @@ class Utils {
             if parts.count >= 2 {
                 let val = parts[0]
                 parts.removeFirst()
-                trie.insert(word: String(val), value: parts.map({s in String.init(prefix+s)}))
+                callback(String(val),parts)
             }
         }
     }

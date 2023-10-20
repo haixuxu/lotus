@@ -8,9 +8,9 @@ import SwiftUI
 import Defaults
 
 func getShownCode(candidate: Candidate, origin: String) -> String {
-    if candidate.type == "py" {
-        return "(\(candidate.code))"
-    }
+//    if candidate.type == "py" {
+//        return "(\(candidate.code))"
+//    }
     if candidate.code.hasPrefix(origin) && candidate.code.count > origin.count {
         let helpCount = candidate.code.count - origin.count
         let suffix = String(candidate.code.suffix(helpCount));

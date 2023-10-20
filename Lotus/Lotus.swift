@@ -43,10 +43,34 @@ class Lotus: NSObject {
     public func buildDictTrie() {
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
-        Utils.shared.dictAppendTrie(dictfile: "userdict", trie: dataTree!,prefix:"0")
-        Utils.shared.dictAppendTrie(dictfile: "wb_table", trie: dataTree!,prefix:"1")
-        Utils.shared.dictAppendTrie(dictfile: "py_table", trie: dataTree!,prefix:"2")
-        Utils.shared.dictAppendTrie(dictfile: "sp_table", trie: dataTree!,prefix:"3")
+        Utils.shared.parseDictKeyValue(dictfile: "userdict", callback:  { (word, list) in
+            list.forEach { item in
+                dataTree!.insert(word: word, value:String("0"+item) )
+            }
+        })
+        var wbmap = [String: String]()
+        Utils.shared.parseDictKeyValue(dictfile: "wb_table", callback:  { (word, list) in
+            list.forEach { item in
+                wbmap[String(item)]=word
+                dataTree!.insert(word: word, value:String("1"+item) )
+            }
+        })
+        Utils.shared.parseDictKeyValue(dictfile: "py_table", callback:  { (word, list) in
+            list.forEach { item in
+                if let wb_word = wbmap[String(item)] {
+                    dataTree!.insert(word: word, value: String("2\(item)(\(wb_word))"))
+                    // now val is not nil and the Optional has been unwrapped, so use it
+                }else {
+                    dataTree!.insert(word: word, value:String("2"+item) )
+                }
+               
+            }
+        })
+        Utils.shared.parseDictKeyValue(dictfile: "sp_table", callback:  { (word, list) in
+            list.forEach { item in
+                dataTree!.insert(word: word, value:String("3"+item) )
+            }
+        })
         
         let endtime =  Date().currentTimeMillis()
 

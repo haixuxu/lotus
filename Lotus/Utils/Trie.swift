@@ -26,7 +26,7 @@ class Trie{
         self.root = TrieNode(uchar: "*")
     }
     // insert string
-    public func insert(word: String, value:[String]) {
+    public func insert(word: String, value:String) {
         guard !word.isEmpty else { return }
         
         var node = self.root
@@ -46,11 +46,9 @@ class Trie{
             if index == word.count-1 {
                 node.isCompleteWord = true
                 if node.data != nil {
-                    for item in value {
-                        node.data!.append(item)
-                    }
+                    node.data!.append(value)
                 }else {
-                    node.data = value
+                    node.data = [value]
                 }
             }
         }

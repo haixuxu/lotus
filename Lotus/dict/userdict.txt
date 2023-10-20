@@ -6,4 +6,4 @@ date {date} {datetime} {datetime|yyyy年MM月dd日}
 edog 🐶
 escr 😂
 mail xuxihai123@gmail.com x373241884y@gmail.com
-zzem 常用Emoji 😂 🐶 👍 ❤️ 🙏
+zzem 常用Emoji 😂 🐶 👍 ❤️ 🙏 😎 🤝

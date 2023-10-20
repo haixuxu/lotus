@@ -174,9 +174,14 @@ class LotusInputController: IMKInputController {
             let index = pos - 1
             guard let candidates = self.candidates else {return nil}
             if index < candidates.count {
-                _composedString = candidates[index].text
-                if candidates[index].type == "py" {
-                     self.sendLog(str: candidates[index].text)
+                let candiate = candidates[index]
+                _composedString = candiate.text
+                if _originalString.hasPrefix("zz"){
+                    _originalString = candiate.code
+                    return true
+                }
+                if candiate.type == "py" {
+                     self.sendLog(str: candiate.text)
                 }
                 insertText(self)
             } else {
@@ -249,7 +254,7 @@ class LotusInputController: IMKInputController {
         return handler(event) ?? false
     }
 
-    func queryCandidates(_ sender: Any!){
+    func queryCandidates(){
         let result = Lotus.shared.getCandidates(origin: self._originalString, page: curPage)
         self.hasNext = result.hasNext
         self.hasPrev = result.hasPrev
@@ -258,8 +263,9 @@ class LotusInputController: IMKInputController {
 
     // 更新候选窗口
     func refreshCandidatesWindow() {
-        queryCandidates(client())
+        queryCandidates()
         let candidates = self.candidates!
+        
         if Defaults[.wubiAutoCommit] && candidates.count == 1 && _originalString.count >= 4 {
             // 满4码唯一候选词自动上屏
             if let candidate = candidates.first {

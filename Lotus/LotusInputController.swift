@@ -298,6 +298,7 @@ class LotusInputController: IMKInputController {
     // 往输入框插入当前字符
     func insertText(_ sender: Any!) {
         NSLog("insertText: %@", _composedString)
+        _composedString.removingRegexMatches(pattern: "\\([a-z]+\\)")
         let value = NSAttributedString(string: _composedString)
         client().insertText(value, replacementRange: replacementRange())
         clean()

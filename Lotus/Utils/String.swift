@@ -58,5 +58,13 @@ extension String {
      func URLEncodedString() -> String? {
         return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed);
       }
+    
+    mutating func removingRegexMatches(pattern: String, replaceWith: String = "") {
+          do {
+              let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+              let range = NSRange(location: 0, length: count)
+              self = regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replaceWith)
+          } catch { return }
+      }
 
 }

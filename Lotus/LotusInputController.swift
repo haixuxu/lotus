@@ -176,7 +176,7 @@ class LotusInputController: IMKInputController {
             if index < candidates.count {
                 let candiate = candidates[index]
                 _composedString = candiate.text
-                if _originalString.hasPrefix("zz"){
+                if _originalString.hasPrefix("zz") && candidates.count<4 {
                     _originalString = candiate.code
                     return true
                 }

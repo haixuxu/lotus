@@ -15,7 +15,7 @@ struct WordStockPane: View {
         Preferences.Container(contentWidth: 450.0) {
             Preferences.Section(title: "") {
                 Button(action: {
-                    Lotus.shared.buildDictTrie()
+                    LotusTable.shared.buildDictTrie()
                 }, label: {
                     Text("重建索引")
                 })

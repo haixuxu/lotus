@@ -29,5 +29,5 @@ class LotusPreferencesController {
             }
         ]
     )
-    static let shared = LotusPreferencesController()
+    static let instance = LotusPreferencesController()
 }

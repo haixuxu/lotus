@@ -12,13 +12,12 @@ import InputMethodKit
 import Sparkle
 import Defaults
 
-let kConnectionName = "Lotus_90_Connection"
 let prefixType:[String:String] = ["0":"user", "1":"wb", "2":"py","3":"sp"]
 
-class Lotus: NSObject {
+class LotusTable: NSObject {
 
-    static let nextPageBtnTapped = Notification.Name("Lotus.nextPageBtnTapped")
-    static let prevPageBtnTapped = Notification.Name("Lotus.prevPageBtnTapped")
+    static let nextPageBtnTapped = Notification.Name("LotusTable.nextPageBtnTapped")
+    static let prevPageBtnTapped = Notification.Name("LotusTable.prevPageBtnTapped")
     
     private var dataTree:Trie?
     private var suggestCount:Int = 6
@@ -77,7 +76,7 @@ class Lotus: NSObject {
         print("build dict index time:\(endtime-starttime)ms")
     }
 
-    var server: IMKServer = IMKServer.init(name: kConnectionName, bundleIdentifier: Bundle.main.bundleIdentifier)
+
     func getCandidates(origin: String = String(), page: Int = 1) -> CandidatesData {
 //        var candidates: [Candidate] = []
         var queryRes:CandidatesData = CandidatesData(hasPrev:false, hasNext:false,list:[])
@@ -133,5 +132,5 @@ class Lotus: NSObject {
         return Candidate(code: code, text: String(value2), type: type)
     }
     
-    static let shared = Lotus()
+    static let shared = LotusTable()
 }

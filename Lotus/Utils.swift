@@ -82,5 +82,20 @@ class Utils {
             }
         }
     }
+    
+    func sendLog(str:String){
+        NSLog("sendLog str:\(str)")
+        let apiurl = "https://www.75cos.com/input/set?word=\(str.URLEncodedString()!)"
+        let url = URL(string: apiurl)!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard error == nil else {
+               NSLog("[Service] 网络出错:\(error!.localizedDescription)")
+               return
+             }
+            guard let data = data else { return }
+            print(String(data: data, encoding: .utf8)!)
+        }
+        task.resume()
+    }
     static let shared = Utils()
 }

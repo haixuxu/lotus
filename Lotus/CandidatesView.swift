@@ -79,7 +79,7 @@ struct CandidatesView: View {
                         .onTapGesture {
                             if !hasPrev { return }
                             NotificationCenter.default.post(
-                                name: Lotus.prevPageBtnTapped,
+                                name: LotusTable.prevPageBtnTapped,
                                 object: nil
                             )
                         }
@@ -90,7 +90,7 @@ struct CandidatesView: View {
                             if !hasNext { return }
                             print("next")
                             NotificationCenter.default.post(
-                                name: Lotus.nextPageBtnTapped,
+                                name: LotusTable.nextPageBtnTapped,
                                 object: nil
                             )
                         }
@@ -104,7 +104,7 @@ struct CandidatesView: View {
                     .onTapGesture {
                         if !hasPrev { return }
                         NotificationCenter.default.post(
-                            name: Lotus.prevPageBtnTapped,
+                            name: LotusTable.prevPageBtnTapped,
                             object: nil
                         )
                     }
@@ -116,7 +116,7 @@ struct CandidatesView: View {
                         if !hasNext { return }
                         print("next")
                         NotificationCenter.default.post(
-                            name: Lotus.nextPageBtnTapped,
+                            name: LotusTable.nextPageBtnTapped,
                             object: nil
                         )
                     }

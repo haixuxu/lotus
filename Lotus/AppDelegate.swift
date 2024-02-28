@@ -11,26 +11,32 @@ import InputMethodKit
 import Defaults
 
 
+let kConnectionName = "Lotus_90_Connection"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    let app:Lotus
-    func installInputSource() {
-          print("install input source")
-            registerInputSource()
-            deactivateInputSource()
-            activateInputSource()
-          NSApp.terminate(nil)
-   }
 
+    var server: IMKServer
+    
     override init() {
-        app = Lotus.shared
+       server = IMKServer.init(name: kConnectionName, bundleIdentifier: Bundle.main.bundleIdentifier)
    }
    func applicationDidFinishLaunching(_ aNotification: Notification) {
+       let argstr = CommandLine.arguments.joined(separator: " ")
+       NSLog("argstr====\(argstr)")
        if CommandLine.arguments.count > 1 {
            print("[Lotus] launch argument: \(CommandLine.arguments[1])")
            let command = CommandLine.arguments[1]
+           if command == "--develop" {
+               activateInputSource()
+               return
+           }
            if command == "--install" {
-               return installInputSource()
+               NSLog("install input source")
+                 registerInputSource()
+                 deactivateInputSource()
+                 activateInputSource()
+               NSApp.terminate(nil)
            }
        }
        NSLog("launch application")

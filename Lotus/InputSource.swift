@@ -9,7 +9,6 @@ import Foundation
 import Carbon
 
 let installLocation = "/Library/Input Methods/Lotus.app"
-let kSourceID = "com.xuxihai.inputmethod.Lotus"
 let kInputModeID = "com.xuxihai.inputmethod.Lotus"
 
 func registerInputSource() {
@@ -33,7 +32,7 @@ func activateInputSource() {
             sourceList?.takeUnretainedValue(), index)).takeUnretainedValue()
         let ptr = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID)
         let sourceID = Unmanaged<CFString>.fromOpaque(ptr!).takeUnretainedValue() as NSString
-        if (sourceID.isEqual(to: kSourceID) ) || sourceID.isEqual(to: kInputModeID) {
+        if (sourceID.isEqual(to: kInputModeID)) {
             TISEnableInputSource(inputSource)
             NSLog("Enabled input source: %@", sourceID)
             let isSelectable = Unmanaged<CFBoolean>.fromOpaque(TISGetInputSourceProperty(
@@ -54,7 +53,7 @@ func deactivateInputSource() {
             sourceList?.takeUnretainedValue(), index)).takeUnretainedValue()
         let ptr = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID)
         let sourceID = Unmanaged<CFString>.fromOpaque(ptr!).takeUnretainedValue() as NSString
-        if (sourceID.isEqual(to: kSourceID) ) || sourceID.isEqual(to: kInputModeID) {
+        if (sourceID.isEqual(to: kInputModeID)) {
             TISDisableInputSource(inputSource)
             NSLog("Disable input source: %@", sourceID)
       }

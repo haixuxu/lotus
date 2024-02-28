@@ -6,6 +6,6 @@
   
 */
 
-com.xuxihai.inputmethod.Lotus = "青莲输入法";
+com.xuxihai.inputmethod.Lotus = "人间惊鸿客";
 CFBundleName = "Lotus";
-CFBundleDisplayName = "青莲DiDi";
+CFBundleDisplayName = "LotusInput";

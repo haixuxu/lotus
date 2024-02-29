@@ -23,7 +23,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>v0.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -31,7 +31,7 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>100001</string>
+	<string>20240229165609</string>
 	<key>ComponentInputModeDict</key>
 	<dict>
 		<key>tsInputModeListKey</key>
@@ -44,12 +44,12 @@
 				<string>zh-Hans</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
 				<string>icon64.icns</string>
-				<key>tsInputModeDefaultStateKey</key>
-				<true/>
 				<key>tsInputModeCharacterRepertoireKey</key>
 				<array>
 					<string>zh-Hans</string>
 				</array>
+				<key>tsInputModeDefaultStateKey</key>
+				<true/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeJISKeyboardShortcutKey</key>
@@ -89,14 +89,6 @@
 	<string>1401</string>
 	<key>DTXcodeBuild</key>
 	<string>14A400</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.15</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2022 xuxihai. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
 	<key>InputMethodConnectionName</key>
 	<string>Lotus_90_Connection</string>
 	<key>InputMethodServerControllerClass</key>
@@ -109,6 +101,14 @@
 	<true/>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.15</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2022 xuxihai. All rights reserved.</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 	<key>tsInputMethodAlternateIconFileKey</key>
 	<string>icon64.icns</string>
 	<key>tsInputMethodCharacterRepertoireKey</key>

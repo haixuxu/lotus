@@ -52,7 +52,7 @@ enum CodingStrategy: Int, CaseIterable, Decodable, Encodable {
 }
 
 
-var set = false
+//var set = false
 
 let punctution: [String: String] = [
     ",": "，",

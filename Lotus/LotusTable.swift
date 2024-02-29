@@ -8,53 +8,60 @@
 import Foundation
 import Cocoa
 import InputMethodKit
-//import SQLite3
 import Sparkle
 import Defaults
 
 let prefixType:[String:String] = ["0":"user", "1":"wb", "2":"py","3":"sp"]
 
 class LotusTable: NSObject {
-
+    
     static let nextPageBtnTapped = Notification.Name("LotusTable.nextPageBtnTapped")
     static let prevPageBtnTapped = Notification.Name("LotusTable.prevPageBtnTapped")
     
-    private var dataTree:Trie?
+    private var dataTree:Trie?=nil
     private var suggestCount:Int = 6
     private var strategy:CodingStrategy = CodingStrategy.wubiPinyin
-
+    var canUsed: Bool {
+        get {
+            if(dataTree==nil){
+                return false
+            }else{
+                return true;
+            }
+        }
+    }
+    
     override init() {
         super.init()
         self.suggestCount = Defaults[.candidateCount]
         self.strategy = Defaults[.codeStrategy]
-        NSLog("Config==:\(self.strategy),\(self.suggestCount)")
-        self.buildDictTrie()
+        NSLog("[LotusTable] Config==:\(self.strategy),\(self.suggestCount)")
         
         Defaults.observe(keys: .candidateCount, .codeStrategy) { () in
             self.suggestCount = Defaults[.candidateCount]
             self.strategy = Defaults[.codeStrategy]
         }.tieToLifetime(of: self)
     }
-
+    
     deinit {
         dataTree = nil
     }
     public func buildDictTrie() {
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
-        Utils.shared.parseDictKeyValue(dictfile: "userdict", callback:  { (word, list) in
+        Utils.parseDictKeyValue(dictfile: "userdict", callback:  { (word, list) in
             list.forEach { item in
                 dataTree!.insert(word: word, value:String("0"+item) )
             }
         })
         var wbmap = [String: String]()
-        Utils.shared.parseDictKeyValue(dictfile: "wb_table", callback:  { (word, list) in
+        Utils.parseDictKeyValue(dictfile: "wb_table", callback:  { (word, list) in
             list.forEach { item in
                 wbmap[String(item)]=word
                 dataTree!.insert(word: word, value:String("1"+item) )
             }
         })
-        Utils.shared.parseDictKeyValue(dictfile: "py_table", callback:  { (word, list) in
+        Utils.parseDictKeyValue(dictfile: "py_table", callback:  { (word, list) in
             list.forEach { item in
                 if let wb_word = wbmap[String(item)] {
                     dataTree!.insert(word: word, value: String("2\(item)(\(wb_word))"))
@@ -62,23 +69,23 @@ class LotusTable: NSObject {
                 }else {
                     dataTree!.insert(word: word, value:String("2"+item) )
                 }
-               
+                
             }
         })
-        Utils.shared.parseDictKeyValue(dictfile: "sp_table", callback:  { (word, list) in
+        Utils.parseDictKeyValue(dictfile: "sp_table", callback:  { (word, list) in
             list.forEach { item in
                 dataTree!.insert(word: word, value:String("3"+item) )
             }
         })
         
         let endtime =  Date().currentTimeMillis()
-
-        print("build dict index time:\(endtime-starttime)ms")
+        
+        print("[LotusTable] build dict index time:\(endtime-starttime)ms")
     }
-
-
+    
+    
     func getCandidates(origin: String = String(), page: Int = 1) -> CandidatesData {
-//        var candidates: [Candidate] = []
+        //        var candidates: [Candidate] = []
         var queryRes:CandidatesData = CandidatesData(hasPrev:false, hasNext:false,list:[])
         if page != 1 {
             queryRes.hasPrev=true
@@ -87,7 +94,7 @@ class LotusTable: NSObject {
             return queryRes
         }
         NSLog("get local candidate, origin: \(origin)")
-
+        
         let limit = self.suggestCount
         var start = 0;
         let offset = (page - 1) * limit
@@ -99,8 +106,8 @@ class LotusTable: NSObject {
                 return false
             }
             let first = value.substring(to: 1)
-         
-//            NSLog("first==\(value)===\(first),\(self.strategy), \(CodingStrategy.wubi)")
+            
+            //            NSLog("first==\(value)===\(first),\(self.strategy), \(CodingStrategy.wubi)")
             if self.strategy == CodingStrategy.wubi && first == "2" {
                 return false;
             }
@@ -111,7 +118,7 @@ class LotusTable: NSObject {
                 guard let type = prefixType[first] else {return false}
                 let suggest = self.buildSuggest(code: String(origin+code), value: value,type:type)
                 //
-//                NSLog("append====\(start)")
+                //                NSLog("append====\(start)")
                 queryRes.list.append(suggest)
             }
             start = start + 1

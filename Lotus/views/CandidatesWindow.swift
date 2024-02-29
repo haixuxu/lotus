@@ -8,7 +8,6 @@
 import SwiftUI
 import InputMethodKit
 
-//var set = false
 
 class CandidatesWindow: NSWindow, NSWindowDelegate {
     let hostingView = NSHostingView(rootView: CandidatesView(candidates: [], origin: ""))
@@ -86,7 +85,7 @@ class CandidatesWindow: NSWindow, NSWindowDelegate {
 
         var left = originalTopLeft.x
         var top = originalTopLeft.y
-        if let curScreen = Utils.shared.getScreenFromPoint(originalTopLeft) {
+        if let curScreen = Utils.getScreenFromPoint(originalTopLeft) {
             let screen = curScreen.frame
 
             if originalTopLeft.x + frame.width > screen.maxX - screenPadding {

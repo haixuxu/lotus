@@ -11,16 +11,18 @@ import Defaults
 
 class LotusService {
     static let instance = LotusService()
-    var controller: LotusInputController?
-    var client: IMKTextInput?
-    var enable: Bool = false
-    
+    private let tipsWindow = TipsWindow()
+
+    private var checkShiftKeyUp: (NSEvent) -> Bool?
     private var  _composedString = ""
     private let candidatesWindow = CandidatesWindow.shared
     private var inputMode: InputMode = .zhhans
     private var hasPrev:Bool = false
     private var hasNext:Bool = false
     private var candidates:[Candidate]?
+    var enable: Bool = false
+    var controller: LotusInputController? = nil
+    var client: IMKTextInput? = nil
     var _originalString = "" {
         didSet {
             if self.curPage != 1 {
@@ -29,14 +31,14 @@ class LotusService {
                 return
             }
             NSLog("[Service] original changed: \(self._originalString), refresh window")
-
+            
             // 建议mark originalString, 否则在某些APP中会有问题
             self.markText()
-
+            
             self._originalString.count > 0 ? self.refreshCandidatesWindow() : candidatesWindow.close()
         }
     }
-
+    
     private var curPage: Int = 1 {
         didSet(old) {
             guard old == self.curPage else {
@@ -49,8 +51,22 @@ class LotusService {
     
     init() {
         // 私有化初始化方法，确保只能通过shared属性获取实例
-        controller=nil
-        client=nil
+        // 检查shift键被抬起
+        func createCheckShiftKeyUpFn() -> (NSEvent) -> Bool {
+            var lastModifier: NSEvent.ModifierFlags = .init(rawValue: 0)
+            func checkShiftKeyUp(_ event: NSEvent) -> Bool {
+                if event.type == .flagsChanged
+                    && event.modifierFlags == .init(rawValue: 0)
+                    && lastModifier == .shift {  // shift键抬起
+                    lastModifier = event.modifierFlags
+                    return true
+                }
+                lastModifier = event.type == .flagsChanged ? event.modifierFlags : .init(rawValue: 0)
+                return false
+            }
+            return  checkShiftKeyUp
+        }
+        self.checkShiftKeyUp = createCheckShiftKeyUpFn()
     }
     
     private func markText() {
@@ -65,25 +81,25 @@ class LotusService {
         }
     }
     
-  
+    
     
     // ---- handlers begin -----
-
+    
     private func flagChangedHandler(event: NSEvent) -> Bool? {
         // 只有在shift keyup时，才切换中英文输入, 否则会导致shift+[a-z]大写的功能失效
-        if Utils.shared.checkShiftKeyUp(event)! {
+        if checkShiftKeyUp(event)! {
             NSLog("[Service] toggle mode: \(inputMode)")
-
+            
             // 把当前未上屏的原始code上屏处理
             _composedString = _originalString
             insertText()
-
+            
             inputMode = inputMode == .zhhans ? InputMode.enUS : InputMode.zhhans
-
+            
             let text = inputMode == .zhhans ? "中" : "英"
-
+            
             // 在输入坐标处，显示中英切换提示
-            Utils.shared.tipsWindow.showTips(text, origin: getOriginPoint())
+            tipsWindow.showTips(text, origin: getOriginPoint())
             NSLog("[Service] =====>>true")
             return true
         }
@@ -95,7 +111,7 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func enModeHandler(event: NSEvent) -> Bool? {
         // 英文输入模式, 不做任何处理
         if inputMode == .enUS {
@@ -103,7 +119,7 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func pageKeyHandler(event: NSEvent) -> Bool? {
         // +/-/arrowdown/arrowup翻页
         let keyCode = event.keyCode
@@ -122,7 +138,7 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func deleteKeyHandler(event: NSEvent) -> Bool? {
         let keyCode = event.keyCode
         // 删除键删除字符
@@ -135,11 +151,11 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func punctutionKeyHandler(event: NSEvent) -> Bool? {
         // 获取输入的字符
         let string = event.characters!
-
+        
         // 如果输入的字符是标点符号，转换标点符号为中文符号
         if inputMode == .zhhans && punctution.keys.contains(string) {
             _composedString = punctution[string]!
@@ -148,11 +164,11 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func charKeyHandler(event: NSEvent) -> Bool? {
         // 获取输入的字符
         let string = event.characters!
-
+        
         guard let reg = try? NSRegularExpression(pattern: "^[a-zA-Z]+$") else {
             return nil
         }
@@ -161,7 +177,7 @@ class LotusService {
             options: [],
             range: NSRange(location: 0, length: string.count)
         )
-
+        
         // 当前没有输入非字符并且之前没有输入字符,不做处理
         if  _originalString.count <= 0 && match == nil {
             NSLog("[Service] 非字符,不做处理")
@@ -170,12 +186,12 @@ class LotusService {
         // 当前输入的是英文字符,附加到之前
         if match != nil {
             _originalString += string
-
+            
             return true
         }
         return nil
     }
-
+    
     private func numberKeyHandlder(event: NSEvent) -> Bool? {
         // 获取输入的字符
         let string = event.characters!
@@ -191,7 +207,7 @@ class LotusService {
                     return true
                 }
                 if candiate.type == "py" {
-                    Utils.shared.sendLog(str: candiate.text)
+                    Utils.sendLog(str: candiate.text)
                 }
                 insertText()
             } else {
@@ -201,7 +217,7 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func enterKeyHandler(event: NSEvent) -> Bool? {
         // 回车键输入原字符
         if event.keyCode == kVK_Return && _originalString.count > 0 {
@@ -212,7 +228,7 @@ class LotusService {
         }
         return nil
     }
-
+    
     private func spaceKeyHandler(event: NSEvent) -> Bool? {
         // 空格键输入转换后的中文字符
         if event.keyCode == kVK_Space && _originalString.count > 0 {
@@ -220,7 +236,7 @@ class LotusService {
             if let first = candidates.first {
                 _composedString = first.text
                 if first.type == "py" {
-                    Utils.shared.sendLog(str: first.text)
+                    Utils.sendLog(str: first.text)
                 }
                 insertText()
                 candidatesWindow.close()
@@ -231,11 +247,17 @@ class LotusService {
     }
     
     func handleEvent(event:NSEvent)->Bool{
-        let handler = Utils.shared.processHandlers(handlers: [
+//        if(!LotusTable.shared.canUsed){
+//            tipsWindow.showTips("正在初始化...", origin: getOriginPoint())
+//            LotusTable.shared.buildDictTrie()
+//            tipsWindow.showTips("初始化完成.", origin: getOriginPoint())
+//            return false
+//        }
+        let handler = Utils.processHandlers(handlers: [
             pageKeyHandler,
             flagChangedHandler,
             enModeHandler,
-           
+            
             deleteKeyHandler,
             charKeyHandler,
             numberKeyHandlder,
@@ -247,12 +269,12 @@ class LotusService {
     }
     
     func queryCandidates(){
-        let result = Lotus.shared.getCandidates(origin: self._originalString, page: curPage)
+        let result = LotusTable.shared.getCandidates(origin: self._originalString, page: curPage)
         self.hasNext = result.hasNext
         self.hasPrev = result.hasPrev
         self.candidates = result.list
     }
-
+    
     // 更新候选窗口
     func refreshCandidatesWindow() {
         queryCandidates()
@@ -279,8 +301,8 @@ class LotusService {
             topLeft: getOriginPoint()
         )
     }
-
-
+    
+    
     // 往输入框插入当前字符
     func insertText() {
         NSLog("[Service] insertText: %@", _composedString)
@@ -289,7 +311,7 @@ class LotusService {
         client?.insertText(value, replacementRange: controller!.replacementRange())
         clean()
     }
-
+    
     // 获取当前输入的光标位置
     private func getOriginPoint() -> NSPoint {
         var rect = NSRect()
@@ -297,7 +319,7 @@ class LotusService {
         return rect.origin
     }
     
- 
+    
     func clean() {
         NSLog("[Service] clean")
         _originalString = ""

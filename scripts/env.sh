@@ -11,7 +11,7 @@ PROJECT="$PROJECT_ROOT/${TARGET}.xcworkspace"
 APP_NAME="青青输入法"
 
 BUNDLE_IDENTIFIER="com.xuxihai.inputmethod.Lotus"
-INSTALL_LOCATION="/opt"
+INSTALL_LOCATION="/Library/Input Methods"
 
 EXPORT_PATH="$PROJECT_ROOT/dist"
 EXPORT_ARCHIVE="$EXPORT_PATH/archive.xcarchive"

@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>method</key>
-	<string>developer-id</string>
-	<key>signingCertificate</key>
-	<string>Developer ID Application</string>
+	<string>development</string>
 	<key>teamID</key>
 	<string>26Q2UHVQ6X</string>
 </dict>

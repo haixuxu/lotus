@@ -31,7 +31,7 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>20240229165609</string>
+	<string>20240302222145</string>
 	<key>ComponentInputModeDict</key>
 	<dict>
 		<key>tsInputModeListKey</key>
@@ -113,7 +113,7 @@
 	<string>icon64.icns</string>
 	<key>tsInputMethodCharacterRepertoireKey</key>
 	<array>
-		<string>Hans</string>
+		<string>zh-Hans</string>
 	</array>
 	<key>tsInputMethodIconFileKey</key>
 	<string>icon64.icns</string>

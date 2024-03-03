@@ -1,0 +1,51 @@
+on:
+    push:
+      # Sequence of patterns matched against refs/tags
+      tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  
+name: release and upload assets
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: macos-12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set XCode Version
+        run: sudo xcode-select -s /Applications/Xcode_14.1.app
+      - name: Install Dependencies
+        run: |
+          pod install --repo-update
+        shell: bash
+      - name: Build app raw
+        run: |
+          # 在这里进行您的构建步骤
+          ./scripts/build_app.sh
+        shell: bash
+      - name: Build app installer
+        run: |
+          # 在这里进行您的构建步骤
+          ./scripts/build_installer.sh
+        shell: bash
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          body: |
+            release ${{ github.ref }}.
+
+      - uses: AButler/upload-release-assets@v3.0
+        with:
+          files: "dist/Lotus.zip;dist/Lotus.pkg"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ github.ref }}
+          release-id: ${{ steps.create_release.outputs.id }}

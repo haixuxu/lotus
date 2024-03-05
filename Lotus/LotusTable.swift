@@ -12,6 +12,7 @@ import Sparkle
 import Defaults
 
 let prefixType:[String:String] = ["0":"user", "1":"wb", "2":"py","3":"sp"]
+let trieCacheFile = kInputModeID+"/trie_cache.json"
 
 class LotusTable: NSObject {
     
@@ -37,6 +38,20 @@ class LotusTable: NSObject {
         self.strategy = Defaults[.codeStrategy]
         NSLog("[LotusTable] Config==:\(self.strategy),\(self.suggestCount)")
         
+        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            let cacheFolderPath = cacheDirectoryURL.appendingPathComponent(kInputModeID).path
+            if !FileManager.default.fileExists(atPath: cacheFolderPath) {
+                do {
+                    try FileManager.default.createDirectory(atPath: cacheFolderPath, withIntermediateDirectories: true, attributes: nil)
+                    print("Cache directory created successfully.")
+                } catch {
+                    print("Failed to create cache directory: \(error.localizedDescription)")
+                }
+            } else {
+                print("Cache directory already exists.")
+            }
+        }
+        
         Defaults.observe(keys: .candidateCount, .codeStrategy) { () in
             self.suggestCount = Defaults[.candidateCount]
             self.strategy = Defaults[.codeStrategy]
@@ -46,7 +61,64 @@ class LotusTable: NSObject {
     deinit {
         dataTree = nil
     }
+    private func encode() -> Data?{
+        let encoder = JSONEncoder()
+        
+        do {
+            let jsonData = try encoder.encode(self.dataTree?.root)
+            return jsonData
+        } catch {
+            print("Error: \(error)")
+        }
+        return nil
+    }
+    
+    private func decode(jsondt:Data)->Trie? {
+        let decoder = JSONDecoder()
+        
+        do {
+            let trieNode = try decoder.decode(TrieNode.self, from: jsondt)
+            // 使用解码后的 trieNode 对象
+            let trie = Trie.init()
+            trie.root=trieNode
+            return trie
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        return nil
+    }
+    public func loadTrieFromCache(){
+        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            
+            let cacheFilePath = cacheDirectoryURL.appendingPathComponent(trieCacheFile).path
+            NSLog("[LotusTable] try load trie from cache:\(cacheFilePath)")
+            let starttime =  Date().currentTimeMillis()
+            if let cacheData = FileManager.default.contents(atPath: cacheFilePath) {
+                let starttime2 =  Date().currentTimeMillis()
+                NSLog("[LotusTable] load file content:\(starttime2-starttime)ms")
+                self.dataTree = self.decode(jsondt: cacheData)
+                
+            }else{
+                NSLog("[LotusTable] Error== load trie from cache failed:\(trieCacheFile)")
+            }
+            let endtime =  Date().currentTimeMillis()
+            NSLog("[LotusTable] load trie from cache time:\(endtime-starttime)ms")
+            
+            
+        }
+    }
+    public func saveTrieToCache(){
+        let trieStrData = self.encode()
+        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            let cacheFilePath = cacheDirectoryURL.appendingPathComponent(trieCacheFile).path
+            FileManager.default.createFile(atPath: cacheFilePath, contents: trieStrData, attributes: nil)
+            NSLog("[LotusTable] cache to file:\(cacheFilePath)")
+        }
+        
+    }
     public func buildDictTrie() {
+        
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
         Utils.parseDictKeyValue(dictfile: "userdict", callback:  { (word, list) in
@@ -79,8 +151,8 @@ class LotusTable: NSObject {
         })
         
         let endtime =  Date().currentTimeMillis()
-        
-        print("[LotusTable] build dict index time:\(endtime-starttime)ms")
+        NSLog("[LotusTable] build dict index time:\(endtime-starttime)ms，\(dataTree!.root.children.count)")
+        self.saveTrieToCache()
     }
     
     

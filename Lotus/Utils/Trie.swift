@@ -5,26 +5,24 @@
 //  Created by xuxihai on 2022/11/23.
 //
 
-class TrieNode {
-    // 一个a-z字符
-    var uchar: String
+import Foundation
+
+class TrieNode: Codable {
     var children: [String: TrieNode] = [:]
-    var isCompleteWord: Bool = false
-    var data:[String]?
-    
-    init(uchar: String) {
-        self.uchar = uchar;
-//        self.isCompleteWord=isCompleted;
+    var data: [String] = []
+
+    init(){
+        
     }
-    
 }
 
 class Trie{
     
     var root: TrieNode
     init() {
-        self.root = TrieNode(uchar: "*")
+        self.root = TrieNode.init()
     }
+    
     // insert string
     public func insert(word: String, value:String) {
         guard !word.isEmpty else { return }
@@ -34,22 +32,18 @@ class Trie{
         
         for (index, char) in word.enumerated() {
             let charStr = String(char)
-
+            
             if let child = node.children[charStr] {
                 node = child
             } else {
-                cnode = TrieNode(uchar: charStr)
+                cnode = TrieNode.init()
                 node.children[charStr]=cnode
                 node = cnode
             }
             
             if index == word.count-1 {
-                node.isCompleteWord = true
-                if node.data != nil {
-                    node.data!.append(value)
-                }else {
-                    node.data = [value]
-                }
+                //                node.isCompleteWord = true
+                node.data.append(value)
             }
         }
     }
@@ -82,20 +76,18 @@ class Trie{
         
         func backtrack(cnode :TrieNode, paths : inout [String]){
             let data = cnode.data
-            if data != nil {
-                let code = paths.joined(separator: "")
-                for (index,ele) in data!.enumerated(){
-                    if keyword.hasPrefix("zz") && keyword.count==4 && index==0{
-                        continue
-                    }
-                    let completed = callback(code, ele)
-                    if completed {
-                        finished = true
-                        return
-                    }
-                    if keyword.hasPrefix("zz") && keyword.count<4 {
-                        break
-                    }
+            let code = paths.joined(separator: "")
+            for (index,ele) in data.enumerated(){
+                if keyword.hasPrefix("zz") && keyword.count==4 && index==0{
+                    continue
+                }
+                let completed = callback(code, ele)
+                if completed {
+                    finished = true
+                    return
+                }
+                if keyword.hasPrefix("zz") && keyword.count<4 {
+                    break
                 }
             }
             
@@ -106,7 +98,7 @@ class Trie{
             for i in 0..<26 {
                 let charc = String(UnicodeScalar(UInt8(97+i)))
                 if let child = cnode.children[charc] {
-                    paths.append(child.uchar)
+                    paths.append(charc)
                     backtrack(cnode: child, paths: &paths)
                     if finished {
                         return

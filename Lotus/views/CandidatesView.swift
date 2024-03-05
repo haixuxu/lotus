@@ -27,7 +27,7 @@ struct CandidateView: View {
     
     var body: some View {
         let mainColor = selected
-            ? Color(red: 0.863, green: 0.078, blue: 0.235)
+            ? Color(red: 0.863, green: 0.078, blue: 0.89)
             : Color(red: 0.23, green: 0.23, blue: 0.23)
 
         return HStack(alignment: .center, spacing: 4) {

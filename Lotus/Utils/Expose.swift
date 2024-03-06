@@ -38,24 +38,20 @@ class Utils {
         return NSScreen.main
     }
     
-    static func parseDictKeyValue(dictfile: String, callback: (String,Array<Substring>)->Void){
+    
+    
+    static func parseDictLine(dictfile: String, callback: (String)->Void){
         guard let fileURL = Bundle.main.path(forResource: dictfile ,ofType:"txt") else {
             fatalError("File not found:\(dictfile)")
         }
-        
+        NSLog("dict file===\(fileURL)")
         guard let reader = LineReader(path: fileURL) else {
             print("cannot open file \(dictfile)")
             return; // cannot open file
         }
         
         for line in reader {
-            let line2 = line.trimmingCharacters(in: .whitespacesAndNewlines)
-            var parts = line2.split(separator: " ")
-            if parts.count >= 2 {
-                let val = parts[0]
-                parts.removeFirst()
-                callback(String(val),parts)
-            }
+            callback(line)
         }
     }
     
@@ -72,5 +68,17 @@ class Utils {
             print(String(data: data, encoding: .utf8)!)
         }
         task.resume()
+    }
+    
+    static func split( str:String, callback:(Int,String)->Void) {
+        var currentChunk: String = ""
+        for (index, char) in str.enumerated() {
+            if char == " " || char=="\n" {
+                callback(index, currentChunk)
+                currentChunk = ""
+            } else {
+                currentChunk.append(char)
+            }
+        }
     }
 }

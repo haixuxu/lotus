@@ -155,13 +155,13 @@ struct CandidatesView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         CandidatesView(candidates: [
-            Candidate(code: "a", text: "工", type: "wb"),
-            Candidate(code: "ab", text: "戈", type: "wb"),
-            Candidate(code: "abc", text: "啊", type: "wb"),
-            Candidate(code: "abcg", text: "阿", type: "wb"),
-            Candidate(code: "addd", text: "吖", type: "wb"),
-            Candidate(code: "adde", text: "若有", type: "wb"),
-            Candidate(code: "addf", text: "欺压", type: "wb"),
+            Candidate(code: "a", text: "工", type: DATA_WB),
+            Candidate(code: "ab", text: "戈", type: DATA_WB),
+            Candidate(code: "abc", text: "啊", type: DATA_WB),
+            Candidate(code: "abcg", text: "阿", type: DATA_WB),
+            Candidate(code: "addd", text: "吖", type: DATA_WB),
+            Candidate(code: "adde", text: "若有", type: DATA_WB),
+            Candidate(code: "addf", text: "欺压", type: DATA_WB),
         ], origin: "a")
     }
 }

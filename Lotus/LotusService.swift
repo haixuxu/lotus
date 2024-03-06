@@ -206,7 +206,7 @@ class LotusService {
                     _originalString = candiate.code
                     return true
                 }
-                if candiate.type == "py" {
+                if candiate.type == DATA_PY {
                     Utils.sendLog(str: candiate.text)
                 }
                 insertText()
@@ -235,7 +235,7 @@ class LotusService {
             guard let candidates = self.candidates else {return nil}
             if let first = candidates.first {
                 _composedString = first.text
-                if first.type == "py" {
+                if first.type == DATA_PY {
                     Utils.sendLog(str: first.text)
                 }
                 insertText()
@@ -247,12 +247,7 @@ class LotusService {
     }
     
     func handleEvent(event:NSEvent)->Bool{
-//        if(!LotusTable.shared.canUsed){
-//            tipsWindow.showTips("正在初始化...", origin: getOriginPoint())
-//            LotusTable.shared.buildDictTrie()
-//            tipsWindow.showTips("初始化完成.", origin: getOriginPoint())
-//            return false
-//        }
+
         let handler = Utils.processHandlers(handlers: [
             pageKeyHandler,
             flagChangedHandler,

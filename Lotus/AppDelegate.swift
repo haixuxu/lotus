@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 NSApp.terminate(nil)
             }
         }
-        LotusTable.shared.loadTrieFromCache()
+        
         if(!LotusTable.shared.canUsed){
             LotusTable.shared.buildDictTrie()
         }

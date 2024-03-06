@@ -36,7 +36,7 @@ enum InputMode {
 struct Candidate: Hashable {
     let code: String
     let text: String
-    let type: String  // custom | wb | py | sp
+    let type: UInt8  // 0:custom,1 wb,2 py,3 sp
 }
 
 struct CandidatesData {

@@ -69,7 +69,9 @@ class LotusInputController: IMKInputController {
 
     override func deactivateServer(_ sender: Any!) {
         LotusService.instance.enable=false
+        LotusTable.shared.buildWbReserve() // build wubi reserve table
         NSLog("[Controller]<\(uid)> deactivate server for client: \(client()!.bundleIdentifier()!)")
         LotusService.instance.clean()
+
     }
 }

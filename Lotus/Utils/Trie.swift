@@ -7,13 +7,14 @@
 
 import Foundation
 
-class TrieNode: Codable {
-    var children: [String: TrieNode] = [:]
-    var data: [String] = []
+struct NodeData{
+    var type:UInt8
+    var value:String
+}
 
-    init(){
-        
-    }
+class TrieNode {
+    var children: [Character: TrieNode] = [:]
+    var data: [NodeData] = []
 }
 
 class Trie{
@@ -24,36 +25,29 @@ class Trie{
     }
     
     // insert string
-    public func insert(word: String, value:String) {
+    public func insert(word: String, value:NodeData) {
         guard !word.isEmpty else { return }
         
         var node = self.root
         var cnode:TrieNode
         
-        for (index, char) in word.enumerated() {
-            let charStr = String(char)
-            
-            if let child = node.children[charStr] {
+        for char in word {
+            if let child = node.children[char] {
                 node = child
             } else {
                 cnode = TrieNode.init()
-                node.children[charStr]=cnode
+                node.children[char]=cnode
                 node = cnode
             }
-            
-            if index == word.count-1 {
-                //                node.isCompleteWord = true
-                node.data.append(value)
-            }
         }
+        node.data.append(value)
     }
     
     private func findLastNode(word:String)-> TrieNode?{
         var node=self.root
         
         for (index, char) in word.enumerated() {
-            let charStr = String(char)
-            if let child = node.children[charStr] {
+            if let child = node.children[char] {
                 node = child
                 if index == word.count-1 {
                     return node
@@ -66,29 +60,24 @@ class Trie{
     }
     
     // find all words with given prefix
-    public func find(keyword: String,callback: (String,String)->Bool) {
+    public func find(keyword: String,callback: (String,NodeData)->Bool) {
         if keyword.isEmpty  { return }
         var finished = false;
-        var tracks = [String]()
+        var tracks = [Character]()
         
         guard let lastNode = self.findLastNode(word: keyword) else{ return }
         backtrack(cnode: lastNode, paths:&tracks);
         
-        func backtrack(cnode :TrieNode, paths : inout [String]){
+        func backtrack(cnode :TrieNode, paths : inout [Character]){
             let data = cnode.data
-            let code = paths.joined(separator: "")
-            for (index,ele) in data.enumerated(){
-                if keyword.hasPrefix("zz") && keyword.count==4 && index==0{
-                    continue
-                }
-                let completed = callback(code, ele)
+            let code = String(paths)
+            for item in data{
+                let completed = callback(code,item)
                 if completed {
                     finished = true
                     return
                 }
-                if keyword.hasPrefix("zz") && keyword.count<4 {
-                    break
-                }
+                
             }
             
             if cnode.children.count == 0 {
@@ -96,7 +85,7 @@ class Trie{
             }
             
             for i in 0..<26 {
-                let charc = String(UnicodeScalar(UInt8(97+i)))
+                let charc = Character(UnicodeScalar(97+i)!)
                 if let child = cnode.children[charc] {
                     paths.append(charc)
                     backtrack(cnode: child, paths: &paths)

@@ -11,8 +11,8 @@ import InputMethodKit
 import Sparkle
 import Defaults
 
-let prefixType:[String:String] = ["0":"user", "1":"wb", "2":"py","3":"sp"]
-let trieCacheFile = kInputModeID+"/trie_cache.json"
+let DATA_WB:UInt8=1
+let DATA_PY:UInt8=2
 
 class LotusTable: NSObject {
     
@@ -22,6 +22,8 @@ class LotusTable: NSObject {
     private var dataTree:Trie?=nil
     private var suggestCount:Int = 6
     private var strategy:CodingStrategy = CodingStrategy.wubiPinyin
+    private var wbmap = [String: String]()
+    private var setupwbmap=false
     var canUsed: Bool {
         get {
             if(dataTree==nil){
@@ -38,20 +40,6 @@ class LotusTable: NSObject {
         self.strategy = Defaults[.codeStrategy]
         NSLog("[LotusTable] Config==:\(self.strategy),\(self.suggestCount)")
         
-        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
-            let cacheFolderPath = cacheDirectoryURL.appendingPathComponent(kInputModeID).path
-            if !FileManager.default.fileExists(atPath: cacheFolderPath) {
-                do {
-                    try FileManager.default.createDirectory(atPath: cacheFolderPath, withIntermediateDirectories: true, attributes: nil)
-                    print("Cache directory created successfully.")
-                } catch {
-                    print("Failed to create cache directory: \(error.localizedDescription)")
-                }
-            } else {
-                print("Cache directory already exists.")
-            }
-        }
-        
         Defaults.observe(keys: .candidateCount, .codeStrategy) { () in
             self.suggestCount = Defaults[.candidateCount]
             self.strategy = Defaults[.codeStrategy]
@@ -61,98 +49,49 @@ class LotusTable: NSObject {
     deinit {
         dataTree = nil
     }
-    private func encode() -> Data?{
-        let encoder = JSONEncoder()
-        
-        do {
-            let jsonData = try encoder.encode(self.dataTree?.root)
-            return jsonData
-        } catch {
-            print("Error: \(error)")
-        }
-        return nil
-    }
     
-    private func decode(jsondt:Data)->Trie? {
-        let decoder = JSONDecoder()
-        
-        do {
-            let trieNode = try decoder.decode(TrieNode.self, from: jsondt)
-            // 使用解码后的 trieNode 对象
-            let trie = Trie.init()
-            trie.root=trieNode
-            return trie
-        } catch {
-            print("Error: \(error)")
+    public func buildWbReserve(){
+        if self.setupwbmap {
+            return
         }
-        
-        return nil
-    }
-    public func loadTrieFromCache(){
-        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
-            
-            let cacheFilePath = cacheDirectoryURL.appendingPathComponent(trieCacheFile).path
-            NSLog("[LotusTable] try load trie from cache:\(cacheFilePath)")
-            let starttime =  Date().currentTimeMillis()
-            if let cacheData = FileManager.default.contents(atPath: cacheFilePath) {
-                let starttime2 =  Date().currentTimeMillis()
-                NSLog("[LotusTable] load file content:\(starttime2-starttime)ms")
-                self.dataTree = self.decode(jsondt: cacheData)
-                
-            }else{
-                NSLog("[LotusTable] Error== load trie from cache failed:\(trieCacheFile)")
-            }
-            let endtime =  Date().currentTimeMillis()
-            NSLog("[LotusTable] load trie from cache time:\(endtime-starttime)ms")
-            
-            
-        }
-    }
-    public func saveTrieToCache(){
-        let trieStrData = self.encode()
-        if let cacheDirectoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
-            let cacheFilePath = cacheDirectoryURL.appendingPathComponent(trieCacheFile).path
-            FileManager.default.createFile(atPath: cacheFilePath, contents: trieStrData, attributes: nil)
-            NSLog("[LotusTable] cache to file:\(cacheFilePath)")
-        }
-        
+        self.setupwbmap=true
+        Utils.parseDictLine(dictfile: "wb_table", callback:  { (line) in
+            let word = line.firstWord()
+            Utils.split(str: line, callback: { (index,part) in
+                if index>0{
+                    self.wbmap[part]=word
+                }
+            })
+        })
     }
     public func buildDictTrie() {
         
         self.dataTree = Trie.init()
         let starttime =  Date().currentTimeMillis()
-        Utils.parseDictKeyValue(dictfile: "userdict", callback:  { (word, list) in
-            list.forEach { item in
-                dataTree!.insert(word: word, value:String("0"+item) )
-            }
+        Utils.parseDictLine(dictfile: "userdict", callback:  { (line) in
+            let word = line.firstWord()
+            let dataiem = NodeData(type: 0, value: line)
+            dataTree!.insert(word: word, value: dataiem)
         })
-        var wbmap = [String: String]()
-        Utils.parseDictKeyValue(dictfile: "wb_table", callback:  { (word, list) in
-            list.forEach { item in
-                wbmap[String(item)]=word
-                dataTree!.insert(word: word, value:String("1"+item) )
-            }
+        
+        Utils.parseDictLine(dictfile: "wb_table", callback:  { (line) in
+            let word = line.firstWord()
+            let dataiem = NodeData(type: DATA_WB, value: line)
+            dataTree!.insert(word: word, value: dataiem)
         })
-        Utils.parseDictKeyValue(dictfile: "py_table", callback:  { (word, list) in
-            list.forEach { item in
-                if let wb_word = wbmap[String(item)] {
-                    dataTree!.insert(word: word, value: String("2\(item)(\(wb_word))"))
-                    // now val is not nil and the Optional has been unwrapped, so use it
-                }else {
-                    dataTree!.insert(word: word, value:String("2"+item) )
-                }
-                
-            }
+        Utils.parseDictLine(dictfile: "py_table", callback:  { (line) in
+            let word = line.firstWord()
+            let dataiem = NodeData(type: DATA_PY, value: line)
+            dataTree!.insert(word: word, value: dataiem)
         })
-        Utils.parseDictKeyValue(dictfile: "sp_table", callback:  { (word, list) in
-            list.forEach { item in
-                dataTree!.insert(word: word, value:String("3"+item) )
-            }
+        Utils.parseDictLine(dictfile: "sp_table", callback:  { (line) in
+            let word = line.firstWord()
+            let dataiem = NodeData(type: 3, value: line)
+            dataTree!.insert(word: word, value: dataiem)
         })
         
         let endtime =  Date().currentTimeMillis()
         NSLog("[LotusTable] build dict index time:\(endtime-starttime)ms，\(dataTree!.root.children.count)")
-        self.saveTrieToCache()
     }
     
     
@@ -168,47 +107,62 @@ class LotusTable: NSObject {
         NSLog("get local candidate, origin: \(origin)")
         
         let limit = self.suggestCount
-        var start = 0;
-        let offset = (page - 1) * limit
-        let last = offset + limit
+        var idx = 0;
+        let start = (page - 1) * limit
+        let end = start + limit
         let starttime =  Date().currentTimeMillis()
-        NSLog("sstart:\(start),===\(last)")
-        self.dataTree?.find(keyword: origin, callback:  { (code,value) in
-            if value.count < 2 {
-                return false
+        NSLog("start:\(start),===\(end)")
+        self.dataTree?.find(keyword: origin, callback:  { (code, dataItem) in
+            if self.strategy == CodingStrategy.wubi && dataItem.type==DATA_PY {
+                return false;
             }
-            let first = value.substring(to: 1)
+            if self.strategy == CodingStrategy.pinyin && dataItem.type==DATA_WB {
+                return false;
+            }
+            let linestr = dataItem.value.trimmingCharacters(in: .whitespacesAndNewlines)
+            //            NSLog("call node===\(linestr)")
             
-            //            NSLog("first==\(value)===\(first),\(self.strategy), \(CodingStrategy.wubi)")
-            if self.strategy == CodingStrategy.wubi && first == "2" {
-                return false;
-            }
-            if self.strategy == CodingStrategy.pinyin && first == "1" {
-                return false;
-            }
-            if start >= offset && start < last {
-                guard let type = prefixType[first] else {return false}
-                let suggest = self.buildSuggest(code: String(origin+code), value: value,type:type)
-                //
-                //                NSLog("append====\(start)")
+            let parts = linestr.split(separator: " ")
+            for (index,value) in parts.enumerated(){
+                if index==0{
+                    continue
+                }
+                if origin.hasPrefix("zz") && origin.count==4 && index==1{
+                    continue
+                }
+                idx = idx + 1
+                
+                
+                if idx <= start {
+                    continue
+                }
+                var value2:String=String(value)
+                if dataItem.type==DATA_PY {
+                    if let  wubicode = self.wbmap[value2]{
+                        value2 = String("\(value)(\(wubicode))")
+                    }
+                }
+                let suggest = self.buildSuggest(code: String(origin+code), value: value2,type:dataItem.type)
                 queryRes.list.append(suggest)
+                if idx==end{
+                    queryRes.hasNext = true
+                    return true
+                }
+                
+                if origin.hasPrefix("zz") && origin.count<4 {
+                    break
+                }
             }
-            start = start + 1
-            if start > last{
-                queryRes.hasNext = true
-                return true
-            }else {
-                return false
-            }
+            
+            return false
         })
         let endtime =  Date().currentTimeMillis()
         print("keyword find time:\(endtime-starttime)ms＝＝\(queryRes.list.count)")
         return queryRes
     }
     
-    func buildSuggest(code:String,value:String, type:String)->Candidate {
-        let value2 = value.dropFirst(); // delete one return
-        return Candidate(code: code, text: String(value2), type: type)
+    func buildSuggest(code:String,value:String, type:UInt8)->Candidate {
+        return Candidate(code: code, text: value, type: type)
     }
     
     static let shared = LotusTable()

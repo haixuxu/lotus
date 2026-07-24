@@ -24,10 +24,9 @@ struct PhrasesPane: View {
                         Text("快捷短语")
                             .font(.headline)
                         Spacer()
-                        Button(action: { showAddRow.toggle() }) {
-                            Image(systemName: showAddRow ? "minus.circle" : "plus.circle")
-                            Text(showAddRow ? "取消" : "添加")
-                        }
+                        Button(showAddRow ? "取消" : "＋ 添加") {
+                        showAddRow.toggle()
+                    }
                     }
 
                     if showAddRow {
@@ -81,7 +80,7 @@ struct PhrasesPane: View {
                             }
                         }
                         .frame(height: min(CGFloat(phrases.count) * 44 + 8, 300))
-                        .listStyle(.bordered(alternatesRowBackgrounds: true))
+                        .listStyle(.plain)
                     }
 
                     Spacer(minLength: 10)
@@ -131,10 +130,8 @@ private struct PhraseRow: View {
                 Text(phrase.text)
                     .lineLimit(1)
                 Spacer()
-                Button(action: onEdit) {
-                    Image(systemName: "pencil")
-                }
-                .buttonStyle(.borderless)
+                Button("编辑", action: onEdit)
+                    .buttonStyle(.borderless)
             }
         }
     }

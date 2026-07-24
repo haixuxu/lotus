@@ -8,13 +8,10 @@ import SwiftUI
 import Defaults
 
 func getShownCode(candidate: Candidate, origin: String) -> String {
-//    if candidate.type == "py" {
-//        return "(\(candidate.code))"
-//    }
     if candidate.code.hasPrefix(origin) && candidate.code.count > origin.count {
         let helpCount = candidate.code.count - origin.count
-        let suffix = String(candidate.code.suffix(helpCount));
-        return "~\(String(suffix))"
+        let suffix = String(candidate.code.suffix(helpCount))
+        return "~\(suffix)"
     }
     return ""
 }
@@ -24,28 +21,27 @@ struct CandidateView: View {
     var index: Int
     var origin: String
     var selected: Bool = false
-    
+
+    @Default(.candidateFontSize) private var fontSize
+    @Default(.candidateTheme) private var theme
+    @Default(.wubiCodeTip) private var wubiCodeTip
+
     var body: some View {
-        let mainColor = selected
-            ? Color(red: 0.863, green: 0.078, blue: 0.89)
-            : Color(red: 0.23, green: 0.23, blue: 0.23)
+        let mainColor = selected ? theme.accentColor : theme.textColor
+        let smallSize = CGFloat(max(fontSize - 2, 12))
 
         return HStack(alignment: .center, spacing: 4) {
             Text("\(index).")
-                .frame(minWidth:  20, alignment: .trailing)
-                .font(.system(size: 18))
+                .frame(minWidth: 20, alignment: .trailing)
+                .font(.system(size: smallSize))
                 .foregroundColor(mainColor)
-
-                
             Text(candidate.text)
-                .font(.system(size: 20))
+                .font(.system(size: CGFloat(fontSize)))
                 .foregroundColor(mainColor)
-            if Defaults[.wubiCodeTip] {
+            if wubiCodeTip {
                 Text(getShownCode(candidate: candidate, origin: origin))
-                    .font(.system(size: 18))
-                    .foregroundColor(
-                        .init(Color.RGBColorSpace.sRGBLinear, red: 0.3, green: 0.3, blue: 0.3, opacity: 0.8)
-                    )
+                    .font(.system(size: smallSize))
+                    .foregroundColor(theme.hintColor)
             }
         }
         .fixedSize()
@@ -57,7 +53,10 @@ struct CandidatesView: View {
     var origin: String
     var hasPrev: Bool = false
     var hasNext: Bool = false
-    let direction = Defaults[.candidatesDirection]
+
+    @Default(.candidatesDirection) var direction
+    @Default(.candidateFontSize) private var fontSize
+    @Default(.candidateTheme) private var theme
 
     var _candidatesView: some View {
         ForEach(Array(candidates.enumerated()), id: \.element) { (index, candidate) -> CandidateView in
@@ -123,15 +122,17 @@ struct CandidatesView: View {
             })
         }
 
+    @Default(.showCodeInWindow) private var showCodeInWindow
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
-            if Defaults[.showCodeInWindow] {
+            if showCodeInWindow {
                 Text(origin)
-                    .font(.system(size: 20))
-                    .foregroundColor(.init(red: 0.3, green: 0.3, blue: 0.3))
+                    .font(.system(size: CGFloat(fontSize)))
+                    .foregroundColor(theme.hintColor)
                     .fixedSize()
             }
-            if Defaults[.candidatesDirection] == CandidatesDirection.horizontal {
+            if direction == CandidatesDirection.horizontal {
                 HStack(alignment: .center, spacing: 8) {
                     _candidatesView
                     _indicator
@@ -148,7 +149,7 @@ struct CandidatesView: View {
         .padding(.horizontal, 10.0)
         .padding(.vertical, 6)
         .fixedSize()
-        .background(Color.white)
+        .background(theme.backgroundColor)
     }
 }
 

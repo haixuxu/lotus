@@ -302,6 +302,9 @@ class LotusService {
     func insertText() {
         NSLog("[Service] insertText: %@", _composedString)
         _composedString.removingRegexMatches(pattern: "\\([a-z]+\\)")
+        if Defaults[.outputTraditional] {
+            _composedString = _composedString.toTraditionalChinese()
+        }
         let value = NSAttributedString(string: _composedString)
         client?.insertText(value, replacementRange: controller!.replacementRange())
         clean()

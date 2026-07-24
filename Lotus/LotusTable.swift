@@ -65,44 +65,51 @@ class LotusTable: NSObject {
         })
     }
     public func buildDictTrie() {
-        
-        self.dataTree = Trie.init()
-        let starttime =  Date().currentTimeMillis()
-        Utils.parseDictLine(dictfile: "userdict", callback:  { (line) in
-            let word = line.firstWord()
-            let dataiem = NodeData(type: 0, value: line)
-            dataTree!.insert(word: word, value: dataiem)
-        })
-        
-        Utils.parseDictLine(dictfile: "wb_table", callback:  { (line) in
-            let word = line.firstWord()
-            let dataiem = NodeData(type: DATA_WB, value: line)
-            dataTree!.insert(word: word, value: dataiem)
-        })
-        Utils.parseDictLine(dictfile: "py_table", callback:  { (line) in
-            let word = line.firstWord()
-            let dataiem = NodeData(type: DATA_PY, value: line)
-            dataTree!.insert(word: word, value: dataiem)
-        })
-        Utils.parseDictLine(dictfile: "sp_table", callback:  { (line) in
-            let word = line.firstWord()
-            let dataiem = NodeData(type: 3, value: line)
-            dataTree!.insert(word: word, value: dataiem)
-        })
-        
-        let endtime =  Date().currentTimeMillis()
-        NSLog("[LotusTable] build dict index time:\(endtime-starttime)ms，\(dataTree!.root.children.count)")
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            let newTree = Trie()
+            let starttime = Date().currentTimeMillis()
+
+            Utils.parseDictLine(dictfile: "userdict", callback: { line in
+                let word = line.firstWord()
+                newTree.insert(word: word, value: NodeData(type: 0, value: line))
+            })
+            Utils.parseDictLine(dictfile: "wb_table", callback: { line in
+                let word = line.firstWord()
+                newTree.insert(word: word, value: NodeData(type: DATA_WB, value: line))
+            })
+            Utils.parseDictLine(dictfile: "py_table", callback: { line in
+                let word = line.firstWord()
+                newTree.insert(word: word, value: NodeData(type: DATA_PY, value: line))
+            })
+            Utils.parseDictLine(dictfile: "sp_table", callback: { line in
+                let word = line.firstWord()
+                newTree.insert(word: word, value: NodeData(type: 3, value: line))
+            })
+
+            let endtime = Date().currentTimeMillis()
+            NSLog("[LotusTable] build dict index time:\(endtime-starttime)ms，\(newTree.root.children.count)")
+
+            DispatchQueue.main.async {
+                self.dataTree = newTree
+            }
+        }
     }
     
     
     func getCandidates(origin: String = String(), page: Int = 1) -> CandidatesData {
-        //        var candidates: [Candidate] = []
-        var queryRes:CandidatesData = CandidatesData(hasPrev:false, hasNext:false,list:[])
+        var queryRes = CandidatesData(hasPrev: false, hasNext: false, list: [])
         if page != 1 {
-            queryRes.hasPrev=true
+            queryRes.hasPrev = true
         }
         if origin.count <= 0 {
             return queryRes
+        }
+
+        // 第一页：优先插入用户自定义短语
+        if page == 1 {
+            let userCandidates = getUserPhraseCandidates(origin: origin)
+            queryRes.list.append(contentsOf: userCandidates)
         }
         NSLog("get local candidate, origin: \(origin)")
         
@@ -161,8 +168,17 @@ class LotusTable: NSObject {
         return queryRes
     }
     
-    func buildSuggest(code:String,value:String, type:UInt8)->Candidate {
-        return Candidate(code: code, text: value, type: type)
+    func buildSuggest(code: String, value: String, type: UInt8) -> Candidate {
+        let processed = value.processDateTemplates()
+        return Candidate(code: code, text: processed, type: type)
+    }
+
+    /// 查询 UserDefaults 中保存的用户自定义短语
+    func getUserPhraseCandidates(origin: String) -> [Candidate] {
+        let phrases = Defaults[.userPhrases]
+        return phrases
+            .filter { $0.code.hasPrefix(origin) || $0.code == origin }
+            .map { Candidate(code: $0.code, text: $0.text.processDateTemplates(), type: 0) }
     }
     
     static let shared = LotusTable()

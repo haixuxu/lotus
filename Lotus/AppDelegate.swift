@@ -36,9 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        if(!LotusTable.shared.canUsed){
-            LotusTable.shared.buildDictTrie()
-        }
+        // buildDictTrie 内部已在后台线程执行，不阻塞主线程
+        LotusTable.shared.buildDictTrie()
         NSLog("launch application")
     }
     

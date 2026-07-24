@@ -7,6 +7,7 @@
 
 import SwiftUI
 import InputMethodKit
+import Defaults
 
 
 class CandidatesWindow: NSWindow, NSWindowDelegate {
@@ -39,6 +40,7 @@ class CandidatesWindow: NSWindow, NSWindowDelegate {
         hostingView.rootView.origin = originalString
         hostingView.rootView.hasPrev = hasPrev
         hostingView.rootView.hasNext = hasNext
+        self.alphaValue = Defaults[.candidateWindowOpacity]
         print("origin top left: \(topLeft)")
         self.setFrameTopLeftPoint(topLeft)
         self.orderFront(nil)

@@ -1,11 +1,21 @@
 #!/bin/bash
 
 TARGET='Lotus'
+INSTALL_PATH="/Library/Input Methods/${TARGET}.app/Contents/MacOS/${TARGET}"
 
-# login_user=`/usr/bin/stat -f%Su /dev/console`
+# 获取当前登录用户（兼容 macOS 10.15+）
+login_user=$(stat -f%Su /dev/console 2>/dev/null)
+if [ -z "$login_user" ] || [ "$login_user" = "root" ]; then
+    login_user=$(scutil <<< "show State:/Users/ConsoleUser" 2>/dev/null | awk '/Name :/ && !/loginwindow/ { print $3; exit }')
+fi
 
-# /usr/bin/sudo -u "${login_user}" pkill -9 "${TARGET}"
+echo "Installing Lotus for user: ${login_user}"
 
-# /usr/bin/sudo -u "${login_user}" "/Library/Input Methods/${TARGET}.app/Contents/MacOS/${TARGET}" --install
+# 杀掉旧进程（忽略未运行的错误）
+sudo -u "${login_user}" pkill -9 "${TARGET}" 2>/dev/null || true
 
-echo "${Target} input method registered and activated successfully"
+# 以登录用户身份执行注册 + 激活
+# --install 会调用 TISRegisterInputSource / TISEnableInputSource / TISSelectInputSource
+sudo -u "${login_user}" "${INSTALL_PATH}" --install
+
+echo "${TARGET} input method registered and activated successfully"

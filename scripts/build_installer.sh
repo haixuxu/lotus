@@ -27,7 +27,7 @@ echo "BUNDLE_IDENTIFIER:"$BUNDLE_IDENTIFIER
 echo "INSTALL_LOCATION:"$INSTALL_LOCATION
 echo "EXPORT_INSTALLER:"$EXPORT_INSTALLER
 
-if [[ $USE_CODE_SIGN == "disable" ]]
+if [[ $USE_CODE_SIGN == "disable" || $USE_CODE_SIGN == "adhoc" ]]
 then
     echo "build installer without signing"
     pkgbuild --info "${PROJECT_ROOT}/package/PackageInfo" \

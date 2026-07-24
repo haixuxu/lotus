@@ -40,6 +40,14 @@ then
   echo "export without code signing"
   ditto "$EXPORT_ARCHIVE/Products/Applications/$TARGET.app" "$EXPORT_APP"
   ls "$EXPORT_PATH"
+elif [[ $USE_CODE_SIGN == "adhoc" ]]
+then
+  echo "export with ad-hoc signing"
+  ditto "$EXPORT_ARCHIVE/Products/Applications/$TARGET.app" "$EXPORT_APP"
+  # ad-hoc 重签名，确保 macOS 能正常加载输入法
+  codesign --force --deep --sign - "$EXPORT_APP" || { echo "Ad-hoc signing failed"; exit 1; }
+  echo "Ad-hoc signing done"
+  ls "$EXPORT_PATH"
 else
   /usr/bin/xcodebuild -exportArchive \
   -archivePath "$EXPORT_ARCHIVE" \

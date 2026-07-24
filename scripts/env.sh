@@ -20,11 +20,15 @@ EXPORT_ZIP="$EXPORT_PATH/$TARGET.zip"
 EXPORT_INSTALLER="$EXPORT_PATH/Lotus.pkg"
 EXPORT_INSTALLER_ZIP="$EXPORT_PATH/Lotus.zip"
 
-USE_CODE_SIGN="disable"
+USE_CODE_SIGN="adhoc"
 
 if [[ $USE_CODE_SIGN == "enable" ]]
 then
     BUILD_FLAG=''
+elif [[ $USE_CODE_SIGN == "adhoc" ]]
+then
+    # ad-hoc 签名：不需要开发者证书，但 macOS 可以正常加载
+    BUILD_FLAG='CODE_SIGN_IDENTITY="-"'
 elif [[ $USE_CODE_SIGN == "disable" ]]
 then
     BUILD_FLAG='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO'

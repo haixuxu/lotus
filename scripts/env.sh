@@ -27,8 +27,9 @@ then
     BUILD_FLAG=''
 elif [[ $USE_CODE_SIGN == "adhoc" ]]
 then
-    # ad-hoc 签名：不需要开发者证书，但 macOS 可以正常加载
-    BUILD_FLAG='CODE_SIGN_IDENTITY="-"'
+    # xcodebuild 阶段禁用签名，提取 .app 后再手动 ad-hoc 签名
+    # 不能直接传 CODE_SIGN_IDENTITY="-"，会与 Xcode 自动签名冲突
+    BUILD_FLAG='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO'
 elif [[ $USE_CODE_SIGN == "disable" ]]
 then
     BUILD_FLAG='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO'

@@ -11,6 +11,12 @@ fi
 
 echo "Installing Lotus for user: ${login_user}"
 
+# 移除 quarantine 标记（从网上下载时 macOS 会自动附加）
+xattr -dr com.apple.quarantine "${INSTALL_PATH%/Contents/MacOS/*}" 2>/dev/null || true
+
+# ad-hoc 重签名，确保 Gatekeeper 不拦截
+codesign --force --deep --sign - "${INSTALL_PATH%/Contents/MacOS/*}" 2>/dev/null || true
+
 # 杀掉旧进程（忽略未运行的错误）
 sudo -u "${login_user}" pkill -9 "${TARGET}" 2>/dev/null || true
 

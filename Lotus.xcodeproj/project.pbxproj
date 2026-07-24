@@ -33,6 +33,8 @@
 		BF98794A29326CC000849B0E /* LotusPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794929326CC000849B0E /* LotusPreferencesController.swift */; };
 		BF98794C29326CF700849B0E /* GeneralPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794B29326CF700849B0E /* GeneralPane.swift */; };
 		BF98794E29326D6000849B0E /* WordStockPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794D29326D6000849B0E /* WordStockPane.swift */; };
+		BF98796129326CC000849B0E /* AppearancePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98796029326CC000849B0E /* AppearancePane.swift */; };
+		BF98796329326CC000849B0E /* PhrasesPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98796229326CC000849B0E /* PhrasesPane.swift */; };
 		BF9879502932778800849B0E /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98794F2932778800849B0E /* types.swift */; };
 		BF9879522932799800849B0E /* TipsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9879512932799800849B0E /* TipsWindow.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		BF98794929326CC000849B0E /* LotusPreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotusPreferencesController.swift; sourceTree = "<group>"; };
 		BF98794B29326CF700849B0E /* GeneralPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPane.swift; sourceTree = "<group>"; };
 		BF98794D29326D6000849B0E /* WordStockPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStockPane.swift; sourceTree = "<group>"; };
+		BF98796029326CC000849B0E /* AppearancePane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePane.swift; sourceTree = "<group>"; };
+		BF98796229326CC000849B0E /* PhrasesPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesPane.swift; sourceTree = "<group>"; };
 		BF98794F2932778800849B0E /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
 		BF9879512932799800849B0E /* TipsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsWindow.swift; sourceTree = "<group>"; };
 		BFF89B0B2B9077DD0091FB4F /* build_app.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_app.sh; sourceTree = "<group>"; };
@@ -152,9 +156,11 @@
 		BF148925292BC40C00BC6976 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				BF98794929326CC000849B0E /* LotusPreferencesController.swift */,
-				BF98794B29326CF700849B0E /* GeneralPane.swift */,
-				BF98794D29326D6000849B0E /* WordStockPane.swift */,
+			BF98794929326CC000849B0E /* LotusPreferencesController.swift */,
+			BF98794B29326CF700849B0E /* GeneralPane.swift */,
+			BF98794D29326D6000849B0E /* WordStockPane.swift */,
+			BF98796029326CC000849B0E /* AppearancePane.swift */,
+			BF98796229326CC000849B0E /* PhrasesPane.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -363,6 +369,8 @@
 			files = (
 				BF221A91292F464900C05C87 /* LineReader.swift in Sources */,
 				BF98794E29326D6000849B0E /* WordStockPane.swift in Sources */,
+				BF98796129326CC000849B0E /* AppearancePane.swift in Sources */,
+				BF98796329326CC000849B0E /* PhrasesPane.swift in Sources */,
 				BF19D464292A982700BDB452 /* InputSource.swift in Sources */,
 				BF19D468292A98A100BDB452 /* CandidatesView.swift in Sources */,
 				BF98794A29326CC000849B0E /* LotusPreferencesController.swift in Sources */,

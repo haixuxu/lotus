@@ -313,7 +313,12 @@ class LotusService {
     // 获取当前输入的光标位置
     private func getOriginPoint() -> NSPoint {
         var rect = NSRect()
-        client?.attributes(forCharacterIndex: 0, lineHeightRectangle: &rect)
+        let selectedRange = client?.selectedRange() ?? NSRange(location: 0, length: 0)
+        let charIndex = selectedRange.location > 0 ? selectedRange.location : 0
+        client?.attributes(forCharacterIndex: charIndex, lineHeightRectangle: &rect)
+        if rect == .zero {
+            return NSPoint(x: 100, y: 400)
+        }
         return rect.origin
     }
     
